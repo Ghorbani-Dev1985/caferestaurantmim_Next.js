@@ -1,6 +1,6 @@
-/** @type {import('tailwindcss').Config} */
+import type { Config } from "tailwindcss";
 const { nextui } = require("@nextui-org/react");
-module.exports = {
+const config : Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
@@ -72,14 +72,12 @@ module.exports = {
       }
      } 
   }),
-],
-plugins: [
-  nextui(),
-  require("tailwind-scrollbar"),
-  function ({ addVariant }) {
-    addVariant("child", "& > *");
-    addVariant("child-hover", "& > *:hover");
-  },
-  require('@tailwindcss/typography'),
+require("tailwind-scrollbar"),
+require('@tailwindcss/typography'),
+function ({ addVariant } : any) : void {
+  addVariant("child", "& > *");
+  addVariant("child-hover", "& > *:hover");
+},
 ],
 };
+export default config;

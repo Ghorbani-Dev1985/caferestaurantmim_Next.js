@@ -9,10 +9,12 @@ import AuthProvider from "src/Context/AuthContext";
 import { NextUIProvider } from "@nextui-org/react";
 import { Toaster } from "react-hot-toast";
 import Script from "next/script";
-export default function RootLayout({ children }) {
+import { ReactNode } from "react";
+export default function RootLayout({ children } : {children : ReactNode}) {
   return (
     <html lang="fa" dir="rtl" className={`${ShabnamFD.variable} ${Shabnam.variable} font-sans`}>
       <head>
+       <meta name="description" content="پیش غذا سوپ قارچ و مرغ 80,000 تومان فیله مرغ،قارچ،پیاز،سیر،خامه،شیر،نشاسته،جعفری،لیموترش نان سیر 150,000 تومان خمیر پیتزا،پنیر میکس،سس سیر،تخمه آفتابگردان،جعفری ساطوری،سس آیولی فرنچ فرایز 95,000 تومان سیب زمینی مزه دار شده،سس فرانسوی مخصوص وایت فرایز 180,000 تومان سیب زمینی مزه دار شده،سس قارچ،سس دیپ پنیر،پودر پنیر پارمسان مزرعه سیب زمینی 190,000 تومان سیب زمینی سرخ شده،ژامبون [&hellip;]"/>
       <Script
         strategy="lazyOnload"
         src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_MEASUREMENT_ID}`}

@@ -1,12 +1,13 @@
 import BlogDetails from '@/Features/Blog/Blog'
 import Http from "@/Services/HttpService";
 import {notFound} from 'next/navigation';
-async function getOneBlog(shortName){
+
+async function getOneBlog(shortName : {shortName: string}){
   const { data: blog } = await Http.get(`/articles/${shortName}`);
   return blog
 }
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata({ params } : {params: {shortName : string}}) {
   const blog = await getOneBlog(params.shortName)
   return {
     title: `${blog.title} | کافه رستوران میم `,
@@ -14,7 +15,7 @@ export async function generateMetadata({ params }) {
   }
 }
 
-const Blog = async ({params}) => {
+const Blog = async ({params} : {params: {shortName : string}}) => {
   const blog = await getOneBlog(params.shortName)
   if(!blog.title) return notFound();
     return <BlogDetails blog={blog}/>

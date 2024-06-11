@@ -5,7 +5,7 @@ import AboutUS from "@/Features/Home/AboutUS";
 import BlogsList from "@/Features/Home/BlogsList";
 import ImageGallery from "@/Features/Home/ImageGallery";
 import Http from "@/Services/HttpService";
-import { AboutUsItems } from "./aboutUs/page";
+import AboutUsItems from "./aboutUs/AboutUsItems";
 
 export const metadata = {
  title: "کافه و رستوران میم | Cafe Restaurant mim",
@@ -14,7 +14,7 @@ export const metadata = {
 
 export async function getBlogs() {
   const { data } = await Http.get("/articles");
-  const filteredBlog = data.filter((blog) => blog.publish === true);
+  const filteredBlog = data.filter((blog : any) => blog.publish === true);
   return filteredBlog;
 }
 
@@ -27,7 +27,7 @@ const HomePage = async () => {
         <section className="container">
           <QuickAccess />
           <Menus />
-          <AboutUsItems />
+          <AboutUsItems > </AboutUsItems>
           <BlogsList blogs={blogs} />
         </section>
         <AboutUS />

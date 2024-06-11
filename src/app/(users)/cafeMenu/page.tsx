@@ -1,4 +1,3 @@
-'use client';
 import CafeMenuFeature from '@/Features/CafeMenu/CafeMenu'
 export const metadata = {
     title: "منو کافه میم | کافه و رستوران میم",

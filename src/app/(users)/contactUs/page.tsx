@@ -1,4 +1,3 @@
-'use client';
 import ContactUsFeature from '@/Features/ContactUs/ContactUs'
 export const metadata = {
      title: " ارتباط با ما | کافه رستوران میم",
