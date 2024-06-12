@@ -1,8 +1,7 @@
 import { useRouter } from "next/router"
 
 
-function RedirectLink(link) {
-  console.log(link)
+function RedirectLink(link : string) {
     const router = useRouter()
   return (
    router.replace(link)

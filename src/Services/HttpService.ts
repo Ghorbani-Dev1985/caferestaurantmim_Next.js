@@ -1,15 +1,15 @@
 import axios from "axios";
 
-export const BASE_URL = "https://cafemimapi.liara.run/api"
+export const BaseURL = process.env.NEXT_PUBLIC_DOMAINAPI_URL
 
 const Api = axios.create({
-    baseURL: BASE_URL,
+    baseURL: BaseURL,
 })
 
 Api.interceptors.request.use(
     (config) => {
-        const getToken = JSON.parse(typeof window !== "undefined" ? window.localStorage.getItem("user") : false);
-          config.headers.Authorization = `Bearer ${getToken?.accessToken}`;
+       // const getToken = JSON.parse(typeof window !== "undefined" ? window.localStorage.getItem("user") : false);
+         // config.headers.Authorization = `Bearer ${getToken?.accessToken}`;
         
 
         return config;

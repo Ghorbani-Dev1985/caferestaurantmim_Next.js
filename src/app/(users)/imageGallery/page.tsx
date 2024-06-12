@@ -5,10 +5,10 @@ import data from "@/Data/data.json";
 import Image from "next/image";
 import useTitle from '@/Hooks/useTitle';
 const ImageGallery = () => {
-    const [clickedImg, setClickedImg] = useState(null);
-    const [currentIndex, setCurrentIndex] = useState(null);
+    const [clickedImg, setClickedImg] = useState("");
+    const [currentIndex, setCurrentIndex] = useState<number>();
     const title = useTitle( "گالری تصاویر | کافه و رستوران میم")
-    const handleClick = (id, href) :void => {
+    const handleClick = (id : number , href : string) :void => {
       setCurrentIndex(id);
       setClickedImg(href);
     };
