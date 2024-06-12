@@ -1,7 +1,15 @@
 import React from "react";
 import { Divider } from "@nextui-org/react";
 import Image from "next/image";
-const MenuItemsCard = ({ src, title, price, subTitle }) => {
+
+type MenuItemsType = {
+  src: string,
+  title: string,
+  price: number,
+  subTitle: string
+}
+
+const MenuItemsCard = ({ src, title, price, subTitle } : MenuItemsType) => {
   return (
     <>
       <div className="flex items-center gap-x-2 border-b border-slate-100 pb-4 md:border-none">

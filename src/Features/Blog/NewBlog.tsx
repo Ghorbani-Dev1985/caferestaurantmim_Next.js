@@ -1,9 +1,9 @@
-"use client"
+"use client";
 import Fieldset from "@/UI/Fieldset";
 import TextField from "@/UI/TextField";
 import { Button } from "@nextui-org/react";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { BiCloudUpload } from "react-icons/bi";
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
@@ -13,6 +13,12 @@ import toast from "react-hot-toast";
 import useTitle from "@/Hooks/useTitle";
 import useProtectRoute from "@/Hooks/useProtectRoute";
 
+type FormValues = {
+  title: string,
+  description: string,
+  shortName: string,
+  cover: string,
+};
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 const modules = {
   toolbar: [
@@ -52,36 +58,36 @@ const formats = [
 ];
 const NewBlog = () => {
   const title = useTitle("افزودن مقاله | کافه رستوران میم ");
-  const protect = useProtectRoute()
+  const protect = useProtectRoute();
   const {
     register,
     formState: { errors },
     handleSubmit,
     reset,
-  } = useForm();
+  } = useForm<FormValues>();
   const [coverName, setCoverName] = useState("");
   const [body, setBody] = useState("");
   const [bodyError, setBodyError] = useState(false);
-  const NewBlogHandler = async (data) => {
-    console.log(data.cover[0])
+  const NewBlogHandler : SubmitHandler<FormValues> = async (data) => {
+    console.log(data.cover[0]);
     if (body.replace(/<(.|\n)*?>/g, "").trim().length !== 0) {
       setBodyError(false);
-     let newBlogFormData = new FormData();
-     newBlogFormData.append("title", data.title);
-     newBlogFormData.append("description", data.description);
-     newBlogFormData.append("shortName", data.shortName);
-     newBlogFormData.append("cover", data.cover[0]);
-     newBlogFormData.append("body", body);
-     await Http.post("/articles/draft", newBlogFormData , {
+      let newBlogFormData = new FormData();
+      newBlogFormData.append("title", data.title);
+      newBlogFormData.append("description", data.description);
+      newBlogFormData.append("shortName", data.shortName);
+      newBlogFormData.append("cover", data.cover[0]);
+      newBlogFormData.append("body", body);
+      await Http.post("/articles/draft", newBlogFormData, {
         headers: {
-          'Content-Type': 'multipart/form-data'
-        }
+          "Content-Type": "multipart/form-data",
+        },
       })
         .then(({ data }) => {
-          toast.success(data.message)
-          reset()
-          setBody("")
-          setCoverName("")
+          toast.success(data.message);
+          reset();
+          setBody("");
+          setCoverName("");
         })
         .catch((err) => toast.error(err.message));
     } else {
@@ -180,12 +186,12 @@ const NewBlog = () => {
 
                     validate: {
                       fileSize: (file) =>
-                         file[0].size / (1024 * 1024) < 1 ||
-                       "حداکثر حجم فایل باید کمتر از یک مگابایت باشد",
+                        file[0].size / (1024 * 1024) < 1 ||
+                        "حداکثر حجم فایل باید کمتر از یک مگابایت باشد",
                     },
-                    })}
+                  })}
                   onChange={({ target }) => {
-                    setCoverName(target.files[0].name)
+                    setCoverName(target.files[0].name);
                   }}
                   accept=".webp , .jpg , .png, .jpeg"
                   className="h-full absolute z-50 opacity-0"

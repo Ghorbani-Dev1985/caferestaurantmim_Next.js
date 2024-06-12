@@ -2,7 +2,15 @@ import Image from "next/image"
 import Link from "next/link"
 import { HiArrowNarrowLeft } from "react-icons/hi"
 
-const BlogsCard = ({blog}) => {
+type BlogProps = {
+  blog: {
+    title: string;
+    cover: string;
+    shortName: string;
+  };
+};
+
+const BlogsCard = ({blog} : BlogProps) => {
     const {title , shortName , cover} = blog
     const src = `${process.env.NEXT_PUBLIC_DOMAINAPI_URL}${cover}`;
     return(

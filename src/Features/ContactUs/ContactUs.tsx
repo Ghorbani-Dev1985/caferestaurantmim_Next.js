@@ -3,14 +3,22 @@ import DividerImg from '@/Images/Main/title.webp'
 import { AddressItems } from "@/UI/Footer";
 import { Button, Input, Textarea } from "@nextui-org/react";
 import AddressMap from "@/UI/AddressMap";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import TextField from "@/UI/TextField";
 import TextAreaField from "@/UI/TextAreaField";
 import Http from "@/Services/HttpService";
 import toast from "react-hot-toast";
+
+type FormValues = {
+    title: string,
+    description: string,
+    shortName: string,
+    cover: string,
+  };
+
 const ContactUs = () => {
-  const {register , formState: {errors} , handleSubmit , reset} = useForm()
-  const NewContactUsMsgHandler = (data) => {
+  const {register , formState: {errors} , handleSubmit , reset} = useForm<FormValues>()
+  const NewContactUsMsgHandler: SubmitHandler<FormValues> = (data) => {
     console.log(data)
     Http.post("/contact" , data)
     .then(({data}) => {

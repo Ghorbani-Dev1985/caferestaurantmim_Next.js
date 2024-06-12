@@ -5,9 +5,13 @@ import TextField from "@/UI/TextField";
 import { Button } from "@nextui-org/react";
 import Image from "next/image";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 import { useAuth, useAuthActions } from "src/Context/AuthContext";
+type FormValues = {
+  identifier: string,
+  password: string,
+};
 
 const LoginPage = () => {
   const title = useTitle(" ورود به حساب کاربری | کافه رستوران میم");
@@ -18,8 +22,8 @@ const LoginPage = () => {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm();
-  const LoginHandler = async (data) => {
+  } = useForm<FormValues>();
+  const LoginHandler : SubmitHandler<FormValues> = async (data) => {
     dispatch({ type: "LOGIN", payload: data });
   };
   return (

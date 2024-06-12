@@ -1,4 +1,20 @@
-import React from "react";
+import React, { ReactNode } from "react";
+
+type TextFieldProps = {
+  children: ReactNode,
+  name: string,
+  label: string,
+  required: boolean,
+  type: string,
+  register: ,
+  placeholder: string,
+  ltr: boolean,
+  validationSchema: object,
+  errors: {
+    name: object
+  },
+}
+
 
 const TextField = ({
   children,
@@ -11,7 +27,7 @@ const TextField = ({
   required,
   validationSchema = {},
   errors,
-}) => {
+} : TextFieldProps) => {
   return (
     <div>
       <label htmlFor={name} className="flex mb-1">
