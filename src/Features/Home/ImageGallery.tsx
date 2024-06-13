@@ -7,9 +7,9 @@ import Link from "next/link";
 import Title from "@/UI/Title";
 
 const ImageGallery = () => {
-  const [clickedImg, setClickedImg] = useState(null);
-  const [currentIndex, setCurrentIndex] = useState(null);
-  const handleClick = (id, href) => {
+  const [clickedImg, setClickedImg] = useState("");
+  const [currentIndex, setCurrentIndex] = useState<number>();
+  const handleClick = (id : number, href : string) => {
     setCurrentIndex(id);
     setClickedImg(href);
   };

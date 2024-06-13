@@ -1,7 +1,13 @@
 import { Pagination, Table, TableBody, TableCell, TableHeader, TableRow } from "@nextui-org/react";
-import { useMemo, useState } from "react";
+import { ReactNode, useMemo, useState } from "react";
 
-const CustomTable = ({children , renderCell , itemsArray}) => {
+type CustomTableType = {
+  children: ReactNode,
+  renderCell: ReactNode,
+  itemsArray: object[],
+}
+
+const CustomTable = ({children , renderCell , itemsArray} : CustomTableType) => {
     const [page, setPage] = useState(1);
     const rowsPerPage = 10;
     const pages = Math.ceil(itemsArray.length / rowsPerPage);

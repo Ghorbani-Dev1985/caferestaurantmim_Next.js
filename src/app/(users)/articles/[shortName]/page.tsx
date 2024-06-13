@@ -7,7 +7,13 @@ async function getOneBlog(shortName : {shortName: string}){
   return blog
 }
 
-export async function generateMetadata({ params } : {params: {shortName : string}}) {
+type ParamsType= {
+  params : {
+    shortName : string
+  }
+}
+
+export async function generateMetadata({ params } : ParamsType) {
   const blog = await getOneBlog(params.shortName)
   return {
     title: `${blog.title} | کافه رستوران میم `,

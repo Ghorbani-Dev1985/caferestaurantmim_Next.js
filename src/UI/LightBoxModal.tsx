@@ -1,29 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Modal,
   ModalContent,
-  ModalHeader,
   ModalBody,
   Button,
-  useDisclosure,
   Image,
 } from "@nextui-org/react";
 import { BiChevronsLeft, BiChevronsRight } from "react-icons/bi";
 import { HiX } from "react-icons/hi";
+
+type LightBoxModalType = {
+  clickedImg: string,
+  setClickedImg: React.Dispatch<React.SetStateAction<string>>,
+  handelRotationRight: any,
+  handelRotationLeft: any,
+}
 
 const LightBoxModal = ({
   clickedImg,
   setClickedImg,
   handelRotationRight,
   handelRotationLeft,
-}) => {
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+}: LightBoxModalType) => {
+  const [visible, setVisible] = useState(false);
   return (
     <>
       <Modal
         backdrop="opaque"
-        isOpen={onOpen}
-        onOpenChange={() => setClickedImg(null)}
+        isOpen={visible}
+        onOpenChange={() => setClickedImg("")}
         hideCloseButton={true}
         classNames={{
           backdrop:
@@ -36,14 +41,14 @@ const LightBoxModal = ({
               <ModalBody className="relative">
                 <div
                   className="cursor-pointer flex justify-end"
-                  onClick={() => setClickedImg(null)}
+                  onClick={() => setClickedImg("")}
                 >
                   <HiX className="size-6 text-white" />
                 </div>
                 <Button
-                  color="white"
+                  color="primary"
                   className="absolute right-0 z-20 top-1/2 bottom-1/2 p-3"
-                  onClick={handelRotationRight}
+                  onPress={handelRotationRight}
                 >
                   <BiChevronsRight className="size-8 text-primary" />
                 </Button>
@@ -55,9 +60,9 @@ const LightBoxModal = ({
                   className="object-fill"
                 />
                 <Button
-                  color="white"
+                  color="primary"
                   className="absolute left-0 z-20 top-1/2 bottom-1/2 p-3"
-                  onClick={handelRotationLeft}
+                  onPress={handelRotationLeft}
                 >
                   <BiChevronsLeft className="size-8 text-primary" />
                 </Button>

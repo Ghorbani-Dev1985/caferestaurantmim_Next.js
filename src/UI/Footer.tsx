@@ -41,7 +41,6 @@ function AddressItems() {
     <>
       <Link
         href="tel:09124366107"
-        size="lg"
         className="flex-center text-base md:text-xl gap-1 text-inherit"
       >
         <BiMobileAlt className="size-6 text-primary-500" />

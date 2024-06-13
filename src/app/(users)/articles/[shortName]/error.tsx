@@ -1,7 +1,5 @@
 'use client';
 
-import toast from "react-hot-toast";
-
 function error({error} : {error : string}) {
     console.log("error" ,error)
   return (

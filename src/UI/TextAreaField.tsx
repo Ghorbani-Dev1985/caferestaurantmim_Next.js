@@ -1,4 +1,18 @@
-import React from "react";
+import React, { ReactNode } from "react";
+import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
+
+type TextAreaFieldTypes = {
+  children: ReactNode,
+  name: string,
+  label: string,
+  required: boolean,
+  type: string,
+  register:  UseFormRegister<FieldValues>,
+  placeholder: string,
+  ltr: boolean,
+  validationSchema: object,
+  errors: FieldErrors<FieldValues>
+}
 
 const TextAreaField = ({
   label,
@@ -10,7 +24,7 @@ const TextAreaField = ({
   required,
   validationSchema = {},
   errors,
-}) => {
+}: TextAreaFieldTypes) => {
   return (
     <div>
       <label htmlFor={name} className="flex mb-1">
@@ -20,7 +34,7 @@ const TextAreaField = ({
         {...register(name, validationSchema)}
         type={type}
         id={name}
-        rows="6"
+        rows={6}
         autoComplete="off"
         placeholder={placeholder}
         className={`${ltr && "dir-ltr placeholder:text-right"} textField-input`}

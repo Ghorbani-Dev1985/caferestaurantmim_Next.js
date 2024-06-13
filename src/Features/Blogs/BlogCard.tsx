@@ -3,15 +3,15 @@ import Link from "next/link"
 import { HiArrowNarrowLeft } from "react-icons/hi"
 
 type BlogProps = {
-  blog: {
+  blogItem: {
     title: string;
     cover: string;
     shortName: string;
   };
 };
 
-const BlogsCard = ({blog} : BlogProps) => {
-    const {title , shortName , cover} = blog
+const BlogsCard = ({blogItem} : BlogProps) => {
+    const {title , shortName , cover} = blogItem
     const src = `${process.env.NEXT_PUBLIC_DOMAINAPI_URL}${cover}`;
     return(
         <div className="w-full flex flex-col gap-8 items-center border border-gray-200 rounded-xl p-5">

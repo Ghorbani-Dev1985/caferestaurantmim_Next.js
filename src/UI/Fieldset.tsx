@@ -1,4 +1,6 @@
-const Fieldset = ({title , children}) => {
+import { ReactNode } from "react";
+
+const Fieldset = ({title , children } : {title: string ; children: ReactNode}) => {
     return ( 
         <fieldset className="rounded-md border border-solid border-gray-300 p-3">
         <legend className="float-none w-auto px-2 text-sm">

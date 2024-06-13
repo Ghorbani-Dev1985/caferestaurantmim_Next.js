@@ -18,11 +18,20 @@ import useProtectRoute from "@/Hooks/useProtectRoute";
 import toast from "react-hot-toast";
 import RouterPush from "@/Hooks/RouterPush";
 
-const ContactUsList = ({contacts}) => {
+type ContactType = {
+  _id: number,
+  createdAt: string,
+  name: string,
+  phone: string,
+  body: string,
+  answer: boolean,
+}
+
+const ContactUsList = ({contacts} : {contacts : object[]}) => {
   const title = useTitle(" پیام ها | کافه رستوران میم");
   const protect = useProtectRoute()
    const router = useRouter()
-   const AnsweredHandler = async (id) => {
+   const AnsweredHandler = async (id : number) => {
       await Http.put('/contact/answered' , {id})
       .then(({data})=> {
        toast.success(data.message)
@@ -32,7 +41,7 @@ const ContactUsList = ({contacts}) => {
        toast.error(err.message)
       })
    }
-   const DeleteContactUsHandler = async (id) => {
+   const DeleteContactUsHandler = async (id : number) => {
      await Http.delete(`/contact/${id}`)
      .then(({data}) => {
        toast.success(data.message)
@@ -40,36 +49,37 @@ const ContactUsList = ({contacts}) => {
      })
      .catch((err) => toast.error(err.message))
    }
-   const renderCell = useCallback((item, columnKey) => {
-      const cellValue = item[columnKey];
+   const renderCell = useCallback((contact : ContactType , columnKey : React.Key) => {
+      const cellValue = contact[columnKey];
       switch (columnKey) {
         case "createdDate":
           return (
-            ToLocalDateStringShort(item.createdAt)
+            ToLocalDateStringShort(contact.createdAt)
           );
         case "name":
           return (    
-              item.name
+              contact.name
           );
         case "phone":
           return (
-             item.phone    
+             contact.phone    
           );
           case "body" :
             return (
               <ModalPlacement
             icon={<BiShow className="size-8 fill-sky-500" />}
             title="متن کامل"
+            btnText="متن کامل"
           >
               <div
-                  dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(item.body) }}
+                  dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(contact.body) }}
                 ></div>
-            {item.body}
+            {contact.body}
           </ModalPlacement>  
             );
          case "answer" :
             return (
-               item.answer ? (
+               contact.answer ? (
                   <Chip
                     startContent={<IoCheckmarkCircleSharp size={18} />}
                     variant="faded"
@@ -84,7 +94,7 @@ const ContactUsList = ({contacts}) => {
                     variant="faded"
                     color="warning"
                     className="border border-amber-500 cursor-pointer"
-                    onClick={() => AnsweredHandler(item._id)}
+                    onClick={() => AnsweredHandler(contact._id)}
                   >
                     بی پاسخ
                   </Chip>
@@ -96,10 +106,10 @@ const ContactUsList = ({contacts}) => {
               btnIcon={<BiTrash className="size-5" />}
               confirmBtnText="حذف"
               titleText="حذف پیام"
-              confirmBtnHandler={() => DeleteContactUsHandler(item._id)}
+              confirmBtnHandler={() => DeleteContactUsHandler(contact._id)}
             >
              <p className="flex-center gap-1.5"> آیا از حذف پیام کاریز  
-              <span className="text-sky-500">{item.name}</span> مطمعن هستید؟</p>
+              <span className="text-sky-500">{contact.name}</span> مطمعن هستید؟</p>
             </ConfirmModal>
             );
         default:

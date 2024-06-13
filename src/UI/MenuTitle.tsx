@@ -1,6 +1,6 @@
 import React from "react";
 
-export const MenuTitle = ({ id, title }) => {
+export const MenuTitle = ({ id, title }: {id: string; title: string}) => {
   return (
     <>
       <div id={id} className="flex flex-col gap-y-2 my-12">

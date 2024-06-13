@@ -1,18 +1,17 @@
 import React, { ReactNode } from "react";
+import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 
-type TextFieldProps = {
+type TextFieldTypes = {
   children: ReactNode,
   name: string,
   label: string,
   required: boolean,
   type: string,
-  register: ,
+  register: UseFormRegister<FieldValues>,
   placeholder: string,
   ltr: boolean,
   validationSchema: object,
-  errors: {
-    name: object
-  },
+  errors: FieldErrors<FieldValues>,
 }
 
 
@@ -27,7 +26,7 @@ const TextField = ({
   required,
   validationSchema = {},
   errors,
-} : TextFieldProps) => {
+} : TextFieldTypes) => {
   return (
     <div>
       <label htmlFor={name} className="flex mb-1">

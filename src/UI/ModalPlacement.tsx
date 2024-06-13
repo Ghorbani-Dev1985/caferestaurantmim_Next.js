@@ -1,5 +1,14 @@
 import {Modal, ModalContent, ModalHeader, ModalBody, useDisclosure, Button} from "@nextui-org/react";
-const ModalPlacement = ({children , title , icon , btnText}) => {
+import { ReactNode } from "react";
+
+type ModalPlacementType = {
+  children: ReactNode,
+  title: string,
+  icon: ReactNode,
+  btnText: string
+}
+
+const ModalPlacement = ({children , title , icon , btnText} : ModalPlacementType) => {
     const {isOpen, onOpen , onOpenChange} = useDisclosure();
     return (
         <>

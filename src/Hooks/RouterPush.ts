@@ -1,4 +1,12 @@
-const RouterPush = (router) => {
+
+type RouterType = {
+  router : {
+    pathname: string,
+    query: string,
+  }
+}
+
+const RouterPush = (router : RouterType) => {
     return ( 
         router.push({
             pathname: router.pathname,

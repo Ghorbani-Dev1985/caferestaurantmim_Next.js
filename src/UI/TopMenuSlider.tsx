@@ -1,9 +1,9 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { Swiper } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Pagination, Autoplay, A11y } from "swiper/modules";
-const TopMenuSlider = ({ children }) => {
+const TopMenuSlider = ({ children }: {children: ReactNode}) => {
   return (
     <>
       <div className="w-full flex h-auto sticky top-32 inset-x-0 z-30 my-8">

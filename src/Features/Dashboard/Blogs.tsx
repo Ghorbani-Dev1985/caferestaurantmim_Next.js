@@ -1,5 +1,5 @@
 "use client"
-import React, { useCallback } from "react";
+import React from "react";
 import Alert from "@/UI/Alert";
 import { TableColumn, Chip } from "@nextui-org/react";
 import Http from "@/Services/HttpService";
@@ -18,11 +18,21 @@ import CustomTable from "@/UI/CustomTable";
 import useTitle from "@/Hooks/useTitle";
 import useProtectRoute from "@/Hooks/useProtectRoute";
 
-const BlogsList = ({ blogsList }) => {
+type BlogType = {
+  _id: number,
+  cover: string,
+  title: string,
+  shortName: string,
+  description: string,
+  body: string,
+  publish: boolean,
+}
+
+const BlogsList = ({ blogsList } : {blogsList : object[]}) => {
   const title = useTitle("مقاله ها | کافه رستوران میم");
   const protect = useProtectRoute()
   const router = useRouter();
-  const PublishBlogHandler = async (id) => {
+  const PublishBlogHandler = async (id : number) => {
     await Http.put("/articles", { id })
       .then(({ data }) => {
         toast.success(data.message);
@@ -30,7 +40,7 @@ const BlogsList = ({ blogsList }) => {
       })
       .catch((err) => console.log(err));
   };
-  const DeleteBlogHandler = async (id) => {
+  const DeleteBlogHandler = async (id : number) => {
     await Http.delete(`/articles/${id}`)
       .then(({ data }) => {
         toast.success(data.message);
@@ -38,8 +48,8 @@ const BlogsList = ({ blogsList }) => {
       })
       .catch((err) => toast.error(err.message));
   };
-  const renderCell = useCallback((item, columnKey) => {
-    const cellValue = item[columnKey];
+  const renderCell = (blog: BlogType, columnKey : React.Key) => {
+    const cellValue = blog[columnKey];
     switch (columnKey) {
       case "cover":
         return (
@@ -48,22 +58,23 @@ const BlogsList = ({ blogsList }) => {
             height={100}
             alt="ghorbani-dev.ir"
             placeholder="blur"
-            blurDataURL={`${process.env.NEXT_PUBLIC_DOMAINAPI_URL}${item.cover}`}
-            src={`${process.env.NEXT_PUBLIC_DOMAINAPI_URL}${item.cover}`}
+            blurDataURL={`${process.env.NEXT_PUBLIC_DOMAINAPI_URL}${blog.cover}`}
+            src={`${process.env.NEXT_PUBLIC_DOMAINAPI_URL}${blog.cover}`}
             className="object-fill rounded-lg"
           />
         );
       case "title":
-        return item.title;
+        return blog.title;
       case "shortName":
-        return item.shortName;
+        return blog.shortName;
       case "description":
         return (
           <ModalPlacement
             icon={<BiShow className="size-8 fill-sky-500" />}
             title="توضیحات"
+            btnText="توضیحات"
           >
-            {item.description}
+            {blog.description}
           </ModalPlacement>
         );
       case "body":
@@ -71,17 +82,18 @@ const BlogsList = ({ blogsList }) => {
           <ModalPlacement
             icon={<BiShow className="size-8 fill-sky-500" />}
             title="بدنه"
+            btnText="بدنه"
           >
             <div
               dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(item.body),
+                __html: DOMPurify.sanitize(blog.body),
               }}
             ></div>
-            {item.body}
+            {blog.body}
           </ModalPlacement>
         );
       case "publish":
-        return item.publish ? (
+        return blog.publish ? (
           <Chip
             startContent={<IoCheckmarkCircleSharp size={18} />}
             variant="faded"
@@ -96,7 +108,7 @@ const BlogsList = ({ blogsList }) => {
             variant="faded"
             color="warning"
             className="border border-amber-500 cursor-pointer"
-            onClick={() => PublishBlogHandler(item._id)}
+            onClick={() => PublishBlogHandler(blog._id)}
           >
             پیش نویس
           </Chip>
@@ -107,18 +119,18 @@ const BlogsList = ({ blogsList }) => {
             btnIcon={<BiTrash className="size-5" />}
             confirmBtnText="حذف"
             titleText="حذف مقاله"
-            confirmBtnHandler={() => DeleteBlogHandler(item._id)}
+            confirmBtnHandler={() => DeleteBlogHandler(blog._id)}
           >
             <p className="flex-center gap-1.5">
               آیا از حذف مقاله با عنوان
-              <span className="text-sky-500">{item.title}</span> مطمعن هستید؟
+              <span className="text-sky-500">{blog.title}</span> مطمعن هستید؟
             </p>
           </ConfirmModal>
         );
       default:
         return cellValue;
     }
-  }, []);
+  };
   return (
       blogsList.length ? (
         <CustomTable itemsArray={blogsList} renderCell={renderCell}>

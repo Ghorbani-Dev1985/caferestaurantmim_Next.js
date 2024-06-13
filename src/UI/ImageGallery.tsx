@@ -1,23 +1,32 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import LightBoxModal from "@/UI/LightBoxModal";
 import Title from "@/UI/Title";
 import data from "@/Data/data.json";
+
+type ImageGalleryType = {
+  children: ReactNode,
+  clickedImg: string,
+  setClickedImg: React.Dispatch<React.SetStateAction<string>>,
+  currentIndex: number | undefined,
+  setCurrentIndex: React.Dispatch<React.SetStateAction<number | undefined>>,
+}
+
 const ImageGallery = ({
   children,
   clickedImg,
   setClickedImg,
   currentIndex,
   setCurrentIndex,
-}) => {
-  const handelRotationRight = () => {
+}:ImageGalleryType) => {
+  const handelRotationRight = () : void => {
     const totalLength = data.images.length;
-    if (currentIndex + 1 >= totalLength) {
+    if (currentIndex! + 1 >= totalLength) {
       setCurrentIndex(0);
       const newUrl = data.images[0].href;
       setClickedImg(newUrl);
       return;
     }
-    const newIndex = currentIndex + 1;
+    const newIndex = currentIndex! + 1;
     const newUrl = data.images.filter((item) => {
       return data.images.indexOf(item) === newIndex;
     });
@@ -26,7 +35,7 @@ const ImageGallery = ({
     setCurrentIndex(newIndex);
   };
 
-  const handelRotationLeft = () => {
+  const handelRotationLeft = () : void => {
     const totalLength = data.images.length;
     if (currentIndex === 0) {
       setCurrentIndex(totalLength - 1);
@@ -34,7 +43,7 @@ const ImageGallery = ({
       setClickedImg(newUrl);
       return;
     }
-    const newIndex = currentIndex - 1;
+    const newIndex = currentIndex! - 1;
     const newUrl = data.images.filter((item) => {
       return data.images.indexOf(item) === newIndex;
     });

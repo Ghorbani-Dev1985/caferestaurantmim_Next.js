@@ -2,8 +2,8 @@ import React from "react";
 import Link from "next/link";
 import Title from "@/UI/Title";
 import BlogsCard from "../Blogs/BlogCard";
-const BlogsList = ({blogs} : {blogs : object}) => {
-  const filteredBlog = blogs.filter((blog) => blog.publish === true);
+const BlogsList = ({blogs} : {blogs : object[]}) => {
+  const filteredBlog : object[] = blogs.filter((blog : any) => blog.publish === true);
   return (
     <>
       <Title text=" خواندنی ها" />
