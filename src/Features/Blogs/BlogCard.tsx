@@ -1,16 +1,9 @@
 import Image from "next/image"
 import Link from "next/link"
 import { HiArrowNarrowLeft } from "react-icons/hi"
+import { BlogType } from "src/Types/BlogType";
 
-type BlogProps = {
-  blogItem: {
-    title: string;
-    cover: string;
-    shortName: string;
-  };
-};
-
-const BlogsCard = ({blogItem} : BlogProps) => {
+const BlogsCard = ({blogItem} : {blogItem: BlogType}) => {
     const {title , shortName , cover} = blogItem
     const src = `${process.env.NEXT_PUBLIC_DOMAINAPI_URL}${cover}`;
     return(

@@ -1,9 +1,9 @@
 import { Pagination, Table, TableBody, TableCell, TableHeader, TableRow } from "@nextui-org/react";
-import { ReactNode, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 
 type CustomTableType = {
-  children: ReactNode,
-  renderCell: ReactNode,
+  children: any,
+  renderCell: any,
   itemsArray: object[],
 }
 
@@ -54,7 +54,7 @@ const CustomTable = ({children , renderCell , itemsArray} : CustomTableType) => 
          items={items}
         >
    {(item) => (
-            <TableRow key={item._id}>
+            <TableRow>
                {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}
               
             </TableRow>

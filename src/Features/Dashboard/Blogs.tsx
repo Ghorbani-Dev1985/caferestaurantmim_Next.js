@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import Alert from "@/UI/Alert";
 import { TableColumn, Chip } from "@nextui-org/react";
@@ -17,30 +17,22 @@ import toast from "react-hot-toast";
 import CustomTable from "@/UI/CustomTable";
 import useTitle from "@/Hooks/useTitle";
 import useProtectRoute from "@/Hooks/useProtectRoute";
+import { BlogType } from "src/Types/BlogType";
 
-type BlogType = {
-  _id: number,
-  cover: string,
-  title: string,
-  shortName: string,
-  description: string,
-  body: string,
-  publish: boolean,
-}
 
-const BlogsList = ({ blogsList } : {blogsList : object[]}) => {
+const BlogsList = ({ blogsList }: { blogsList: BlogType[] }) => {
   const title = useTitle("مقاله ها | کافه رستوران میم");
-  const protect = useProtectRoute()
+  const protect = useProtectRoute();
   const router = useRouter();
-  const PublishBlogHandler = async (id : number) => {
+  const PublishBlogHandler = async (id: number) => {
     await Http.put("/articles", { id })
       .then(({ data }) => {
         toast.success(data.message);
-        RouterPush(router);
+        router;
       })
       .catch((err) => console.log(err));
   };
-  const DeleteBlogHandler = async (id : number) => {
+  const DeleteBlogHandler = async (id: number) => {
     await Http.delete(`/articles/${id}`)
       .then(({ data }) => {
         toast.success(data.message);
@@ -48,7 +40,7 @@ const BlogsList = ({ blogsList } : {blogsList : object[]}) => {
       })
       .catch((err) => toast.error(err.message));
   };
-  const renderCell = (blog: BlogType, columnKey : React.Key) => {
+  const blogCell = (blog: BlogType, columnKey: keyof BlogType) => {
     const cellValue = blog[columnKey];
     switch (columnKey) {
       case "cover":
@@ -131,20 +123,18 @@ const BlogsList = ({ blogsList } : {blogsList : object[]}) => {
         return cellValue;
     }
   };
-  return (
-      blogsList.length ? (
-        <CustomTable itemsArray={blogsList} renderCell={renderCell}>
-          <TableColumn key="cover">تصویر</TableColumn>
-          <TableColumn key="title">عنوان</TableColumn>
-          <TableColumn key="shortName">لینک</TableColumn>
-          <TableColumn key="description">توضیحات</TableColumn>
-          <TableColumn key="body">بدنه</TableColumn>
-          <TableColumn key="publish"> وضعیت انتشار</TableColumn>
-          <TableColumn key="act"> عملیات</TableColumn>
-        </CustomTable>
-      ) : (
-        <Alert alertText="تاکنون مقاله ای ثبت نگردیده است" />
-      )
+  return blogsList.length ? (
+    <CustomTable itemsArray={blogsList} renderCell={blogCell}>
+      <TableColumn key="cover">تصویر</TableColumn>
+      <TableColumn key="title">عنوان</TableColumn>
+      <TableColumn key="shortName">لینک</TableColumn>
+      <TableColumn key="description">توضیحات</TableColumn>
+      <TableColumn key="body">بدنه</TableColumn>
+      <TableColumn key="publish"> وضعیت انتشار</TableColumn>
+      <TableColumn key="act"> عملیات</TableColumn>
+    </CustomTable>
+  ) : (
+    <Alert alertText="تاکنون مقاله ای ثبت نگردیده است" />
   );
 };
 

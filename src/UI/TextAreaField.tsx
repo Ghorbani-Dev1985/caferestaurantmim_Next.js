@@ -11,7 +11,7 @@ type TextAreaFieldTypes = {
   placeholder: string,
   ltr: boolean,
   validationSchema: object,
-  errors: FieldErrors<FieldValues>
+  errors: any
 }
 
 const TextAreaField = ({

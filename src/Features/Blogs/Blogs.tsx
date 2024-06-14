@@ -2,11 +2,10 @@
 import React, { useMemo, useState } from "react";
 import BlogsCard from "./BlogCard";
 import { Pagination } from "@nextui-org/react";
+import { BlogType } from "src/Types/BlogType";
 
-const Blogs = ({ blogs }: { blogs: object[] }) => {
-  const filteredBlog: object[] = blogs.filter(
-    (blog: any) => blog.publish === true
-  );
+const Blogs = ({ blogs }: { blogs: BlogType[] }) => {
+  const filteredBlog : BlogType[] = blogs.filter((blog : any) => blog.publish === true);
   const [page, setPage] = useState(1);
   const rowsPerPage = 10;
   const pages = Math.ceil(filteredBlog.length / rowsPerPage);

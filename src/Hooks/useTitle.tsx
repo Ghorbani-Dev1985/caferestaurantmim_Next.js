@@ -1,7 +1,7 @@
 "use client"
 import { useEffect } from "react";
 
-const useTitle = (title) => {
+const useTitle = (title : string) => {
   useEffect(() => {
     document.title = title;
   }, [title]);

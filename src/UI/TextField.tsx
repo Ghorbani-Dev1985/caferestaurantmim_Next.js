@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
+import { FieldValues, UseFormRegister } from "react-hook-form";
 
 type TextFieldTypes = {
   children: ReactNode,
@@ -11,7 +11,7 @@ type TextFieldTypes = {
   placeholder: string,
   ltr: boolean,
   validationSchema: object,
-  errors: FieldErrors<FieldValues>,
+  errors: any,
 }
 
 

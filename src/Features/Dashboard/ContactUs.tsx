@@ -1,6 +1,6 @@
 "use client"
 import Alert from "@/UI/Alert";
-import React, { useCallback } from "react";
+import React, { ReactNode, useCallback } from "react";
 import CustomTable from "@/UI/CustomTable";
 import { Chip, TableColumn } from "@nextui-org/react";
 import ToLocalDateStringShort from "@/Server/Utils/ToLocalDateStringShort";
@@ -17,17 +17,10 @@ import useTitle from "@/Hooks/useTitle";
 import useProtectRoute from "@/Hooks/useProtectRoute";
 import toast from "react-hot-toast";
 import RouterPush from "@/Hooks/RouterPush";
+import { ContactType } from "src/Types/ContactType";
 
-type ContactType = {
-  _id: number,
-  createdAt: string,
-  name: string,
-  phone: string,
-  body: string,
-  answer: boolean,
-}
 
-const ContactUsList = ({contacts} : {contacts : object[]}) => {
+const ContactUsList = ({contacts} : {contacts : ContactType[]}) => {
   const title = useTitle(" پیام ها | کافه رستوران میم");
   const protect = useProtectRoute()
    const router = useRouter()
@@ -49,10 +42,10 @@ const ContactUsList = ({contacts} : {contacts : object[]}) => {
      })
      .catch((err) => toast.error(err.message))
    }
-   const renderCell = useCallback((contact : ContactType , columnKey : React.Key) => {
+   const contactCell = useCallback((contact : ContactType , columnKey : keyof ContactType) => {
       const cellValue = contact[columnKey];
       switch (columnKey) {
-        case "createdDate":
+        case "createdAt":
           return (
             ToLocalDateStringShort(contact.createdAt)
           );
@@ -118,8 +111,8 @@ const ContactUsList = ({contacts} : {contacts : object[]}) => {
     }, []);
     return ( 
             contacts.length ?  
-            <CustomTable itemsArray={contacts} renderCell={renderCell}>
-                <TableColumn key="createdDate">تاریخ</TableColumn>
+            <CustomTable itemsArray={contacts} renderCell={contactCell}>
+                <TableColumn key="createdAt">تاریخ</TableColumn>
                 <TableColumn key="name"> نام و نام خانوادگی</TableColumn>
                 <TableColumn key="phone">  تلفن تماس</TableColumn>
                 <TableColumn key="body"> متن کامل </TableColumn>
