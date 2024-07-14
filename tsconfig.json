@@ -27,9 +27,6 @@
       "@/Features/*": ["src/Features/*"],
       "@/UI/*": ["src/UI/*"],
       "@/Server/*": ["src/Server/*"],
-      "@/Api/*": ["src/Api/*"],
-      "@/Styles/*": ["src/Styles/*"],
-      "@/Images/*": ["public/*"],
       "@/utils/*": ["src/utils/*"]
     }
   },

@@ -38,8 +38,7 @@ const config : Config = {
            error: 'rgb(255,71 , 87)',
        },
        fontFamily: {
-        ShabnamFD: ["var(--font-shabnamFD)"],
-        Shabnam: ["var(--font-shabnam)"],
+        shabnam: ["var(--font-shabnam-FD)"],
       },
       backgroundImage: {
         'paternBg' : 'url("/Footer/footerPatern.png")',

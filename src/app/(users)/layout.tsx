@@ -1,4 +1,4 @@
-import "/styles/globals.css";
+import "../../../public/styles/globals.css";
 import { ShabnamFont } from "@/utils/font";
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 import { NextUIProvider } from "@nextui-org/react";
@@ -6,6 +6,7 @@ import { Toaster } from "react-hot-toast";
 import Script from "next/script";
 import { ReactNode } from "react";
 import { Metadata } from "next";
+import ReactQueryProvider from "../Providers";
 export const metadata: Metadata = {
   title: "کافه و رستوران میم | Cafe Restaurant mim",
   description: "کافه و رستوران میم با محیطی زیبا در خیابان لاکانی رشت آماده پذیرایی شما عزیزان می باشد ، امیدواریم لحظات خوبی را کنار هم داشته باشیم",
@@ -35,13 +36,14 @@ export default function RootLayout({ children } : {children : ReactNode}) {
       />
       </head>
       <body>
-       
+       <ReactQueryProvider>
         <NextUIProvider>
         <Toaster />
        
         {children}
        
         </NextUIProvider>
+       </ReactQueryProvider>
       </body>
     </html>
   );
