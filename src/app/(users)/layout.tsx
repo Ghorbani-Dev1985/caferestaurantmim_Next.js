@@ -1,24 +1,25 @@
-"use client"
-import "@/Styles/globals.css";
-import Header from "@/UI/Header";
-import PreFooter from "@/UI/PreFooter";
-import Footer from "@/UI/Footer";
-import {ShabnamFD} from '../../Constants/LocalFonts'
-import {Shabnam} from '../../Constants/LocalFonts'
-import AuthProvider from "src/Context/AuthContext";
+import "/styles/globals.css";
+import { ShabnamFont } from "@/utils/font";
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 import { NextUIProvider } from "@nextui-org/react";
 import { Toaster } from "react-hot-toast";
 import Script from "next/script";
 import { ReactNode } from "react";
+import { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "کافه و رستوران میم | Cafe Restaurant mim",
+  description: "کافه و رستوران میم با محیطی زیبا در خیابان لاکانی رشت آماده پذیرایی شما عزیزان می باشد ، امیدواریم لحظات خوبی را کنار هم داشته باشیم",
+};
 export default function RootLayout({ children } : {children : ReactNode}) {
   return (
-    <html lang="fa" dir="rtl" className={`${ShabnamFD.variable} ${Shabnam.variable} font-sans`}>
-      <head>
-       <meta name="description" content="پیش غذا سوپ قارچ و مرغ 80,000 تومان فیله مرغ،قارچ،پیاز،سیر،خامه،شیر،نشاسته،جعفری،لیموترش نان سیر 150,000 تومان خمیر پیتزا،پنیر میکس،سس سیر،تخمه آفتابگردان،جعفری ساطوری،سس آیولی فرنچ فرایز 95,000 تومان سیب زمینی مزه دار شده،سس فرانسوی مخصوص وایت فرایز 180,000 تومان سیب زمینی مزه دار شده،سس قارچ،سس دیپ پنیر،پودر پنیر پارمسان مزرعه سیب زمینی 190,000 تومان سیب زمینی سرخ شده،ژامبون [&hellip;]"/>
-      <Script
-        strategy="lazyOnload"
-        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_MEASUREMENT_ID}`}
-      />
+    <html lang="fa" dir="rtl" className={ShabnamFont.variable}>
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/images/icon/icon-32x32.webp" type="image/webp" sizes="32x32" />
+    <link rel="icon" href="/images/icon/icon-192x192.webp" type="image/webp" sizes="192x192" />
+    <link rel="apple-touch-icon" href="/images/icon/icon-180x180.webp" type="image/webp" />
+    <GoogleTagManager gtmId={`GTM-${process.env.NEXT_PUBLIC_GOOGLETAGMANAGER_ID}`}/>
+    <GoogleAnalytics gaId={`GTM-${process.env.NEXT_PUBLIC_GOOGLEANALYTICS_ID}`} />
        <Script
         id="gtag-init"
         strategy="lazyOnload"
@@ -34,15 +35,13 @@ export default function RootLayout({ children } : {children : ReactNode}) {
       />
       </head>
       <body>
-        <AuthProvider>
+       
         <NextUIProvider>
         <Toaster />
-        <Header />
+       
         {children}
-        <PreFooter />
-        <Footer />
+       
         </NextUIProvider>
-        </AuthProvider>
       </body>
     </html>
   );

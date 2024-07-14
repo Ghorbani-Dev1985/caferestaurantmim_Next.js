@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply p-0 m-0 box-border;
+  }
+  html {
+    @apply scroll-smooth scrollbar-thin scrollbar-thumb-primary scrollbar-track-primary/20;
+  }
+  li {
+    @apply list-none;
+  }
+  body {
+    @apply text-zinc-700 bg-sky-50 h-full font-shabnam text-base overflow-x-hidden scroll-smooth;
+  }
+  p{
+    @apply leading-8 text-justify
+  }
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+}
+
+@layer components {
+  .textField-input {
+    @apply w-full px-4 py-3 rounded-lg text-zinc-800 outline-none border border-gray-100 bg-white dark:bg-transparent hover:border-primary/50 focus:border-primary/50 transition-all duration-300 ease-in-out focus:shadow-lg focus:shadow-primary/20 dark:focus:shadow-primary/20;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

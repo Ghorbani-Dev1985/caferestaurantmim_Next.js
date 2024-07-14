@@ -30,7 +30,7 @@
       "@/Api/*": ["src/Api/*"],
       "@/Styles/*": ["src/Styles/*"],
       "@/Images/*": ["public/*"],
-      "@/Fonts/*": ["src/Assets/Fonts/*"]
+      "@/utils/*": ["src/utils/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
