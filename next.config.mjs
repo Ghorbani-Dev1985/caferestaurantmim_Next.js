@@ -8,7 +8,7 @@ const nextConfig = {
         remotePatterns: [
             {
               protocol: "https",
-              hostname: "cafemimapi.liara.run",
+              hostname: "learn.limitx.ir",
             },
           ],
     },

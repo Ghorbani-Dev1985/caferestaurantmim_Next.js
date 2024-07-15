@@ -1,11 +1,11 @@
-import ImageMorphing from "@/UI/ImageMorphing";
+// import ImageMorphing from "@/UI/ImageMorphing";
 import { ReactNode } from "react";
 
 const AboutUsItems = ({ children } : {children : ReactNode}) => {
     return (
       <div className="flex-col md:flex-row flex-between gap-5">
         <div className="w-full flex-center md:w-2/5">
-          <ImageMorphing href="/Other/aboutUs.webp" />
+          {/* <ImageMorphing href="/Other/aboutUs.webp" /> */}
         </div>
         <div className="w-full md:w-3/5 flex flex-1 flex-col gap-8">
           <h1 className="font-extrabold text-2xl">کافه و رستـوران میم</h1>

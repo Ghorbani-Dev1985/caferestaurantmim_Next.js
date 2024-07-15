@@ -1,5 +1,5 @@
-import { AddressItems } from "@/UI/Footer";
-import AddressMap from "@/UI/AddressMap";
+// import { AddressItems } from "@/UI/Footer";
+// import AddressMap from "@/UI/AddressMap";
 import AboutUsItems from "./AboutUsItems";
 export const metadata = {
   title: "درباره رستوران | کافه رستوران میم",
@@ -10,11 +10,11 @@ const AboutUs = () => {
     <section className="container relative mt-6">
       <AboutUsItems>
         <div className="max-w-lg space-y-8 mx-auto">
-          <AddressItems />
+          {/* <AddressItems /> */}
         </div>
       </AboutUsItems>
       <div className="w-full my-12 rounded-lg overflow-hidden">
-         <AddressMap style="h-72" />
+         {/* <AddressMap style="h-72" /> */}
       </div>
     </section>
   );
