@@ -7,6 +7,7 @@ import Script from "next/script";
 import { ReactNode } from "react";
 import { Metadata } from "next";
 import ReactQueryProvider from "../Providers";
+import Header from "src/common/Header/Header";
 export const metadata: Metadata = {
   title: "کافه و رستوران میم | Cafe Restaurant mim",
   description: "کافه و رستوران میم با محیطی زیبا در خیابان لاکانی رشت آماده پذیرایی شما عزیزان می باشد ، امیدواریم لحظات خوبی را کنار هم داشته باشیم",
@@ -39,8 +40,10 @@ export default function RootLayout({ children } : {children : ReactNode}) {
        <ReactQueryProvider>
         <NextUIProvider>
         <Toaster />
-       
+        <Header />
+         <main className="container h-screen flex flex-col items-center justify-center my-7">
         {children}
+         </main>
        
         </NextUIProvider>
        </ReactQueryProvider>

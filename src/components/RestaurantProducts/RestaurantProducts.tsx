@@ -8,7 +8,6 @@ import { ProductsListType } from "src/types/products";
 const RestaurantProducts = ({ id }: { id: number }) => {
   const { data: products, isPending } = useGetProductsByCategory(id);
   const { data: category } = useGetCategoryById(id);
-  console.log(category);
   return (
     <section className="container relative min-h-screen mt-6">
       {isPending ? (
@@ -17,8 +16,8 @@ const RestaurantProducts = ({ id }: { id: number }) => {
         </div>
       ) : (
         <>
-          <div id={category.slug} className="flex flex-col gap-y-2 my-12">
-            <h2 className=" font-extrabold text-2xl">{category.name}</h2>
+          <div id={category?.slug} className="flex flex-col gap-y-2 my-12">
+            <h2 className=" font-extrabold text-2xl">{category?.name}</h2>
             <p className="flex gap-x-1">
               <span className="block w-28 h-1 rounded-full bg-primary"></span>
               <span className="block size-1 rounded-full bg-primary"></span>

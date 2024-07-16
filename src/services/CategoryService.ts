@@ -1,8 +1,9 @@
-import Http from "./HttpServices";
+import { WcHttp } from "./HttpServices";
+
 
 export function GetCategories() {
-    return Http.get("/products/categories").then(({ data }) => data);
+    return WcHttp.get("/products/categories").then(({ data }) => data);
   }
   export function GetCategoryById(id : number) {
-    return Http.get(`/products/categories/${id}`).then(({ data }) => data);
+    return WcHttp.get(`/products/categories/${id}`).then(({ data }) => data);
   }
