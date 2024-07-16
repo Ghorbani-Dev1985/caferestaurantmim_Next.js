@@ -1,6 +1,5 @@
 "use client";
 import {
-  Divider,
   Navbar,
   NavbarBrand,
   NavbarContent,
@@ -9,21 +8,26 @@ import {
 import TopHeader from "./TopHeader";
 import Link from "next/link";
 import Image from "next/image";
-import { GetMainMenu } from "src/services/MenuService";
 import { useGetMenu } from "src/hooks/useMenu";
 import { MenuListType } from "src/types/menu";
 import React from "react";
 import { HiChevronDown } from "react-icons/hi";
+import { BiCircle } from "react-icons/bi";
+import MobileNav from "./MobileNav";
 
 const Header = () => {
-  const { data: mainMenu, isPending } = useGetMenu();
+  const { data: mainMenu } = useGetMenu();
   const subMenu = mainMenu?.filter((menu: MenuListType) => menu.parent !== 0);
   console.log(subMenu);
   return (
     <header>
       <TopHeader />
-      <Navbar>
+      <Navbar  classNames={{
+          base: "container rounded-lg top-5 p-4 md:2.5 border-none",
+          wrapper: " lg:max-w-[1280px] px-0",
+        }}>
         <NavbarBrand>
+        <MobileNav />
           <Image
             width={116}
             height={55}
@@ -75,14 +79,14 @@ const Header = () => {
           })}
         </NavbarContent>
         <NavbarContent justify="end">
-          {/* <NavbarItem className="hidden lg:flex">
-          <Link href="#">Login</Link>
+          <NavbarItem className="lg:flex">
+          <Link
+              href="/menus"
+              className="flex justify-normal items-center gap-1 bg-primary hover:bg-primary-300 text-white cursor-pointer px-9 py-1.5 rounded-full transition-colors"
+            >
+              <BiCircle /> منوها
+            </Link>
         </NavbarItem>
-        <NavbarItem>
-          <Button as={Link} color="primary" href="#" variant="flat">
-            Sign Up
-          </Button>
-        </NavbarItem> */}
         </NavbarContent>
       </Navbar>
     </header>
