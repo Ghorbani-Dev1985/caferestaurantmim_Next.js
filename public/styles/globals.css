@@ -7,7 +7,7 @@
     @apply p-0 m-0 box-border;
   }
   html{
-    @apply scroll-smooth scrollbar-thin scrollbar-thumb-primary  scrollbar-track-primary-100;
+    @apply scroll-smooth scrollbar-thin scrollbar-thumb-primary  scrollbar-track-primary-100 overflow-x-hidden;
     direction: rtl;
   }
   li{
@@ -30,5 +30,8 @@
   }
   .flex-between{
     @apply flex justify-between items-center
-  }   
+  }
+  .smooth-transition {
+    @apply transition-all duration-700;
+  }  
 }

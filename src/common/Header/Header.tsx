@@ -17,8 +17,6 @@ import MobileNav from "./MobileNav";
 
 const Header = () => {
   const { data: mainMenu } = useGetMenu();
-  const subMenu = mainMenu?.filter((menu: MenuListType) => menu.parent !== 0);
-  console.log(subMenu);
   return (
     <header>
       <TopHeader />
@@ -39,15 +37,16 @@ const Header = () => {
           />
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-4" justify="center">
-          {mainMenu?.map(({ id, title, object_id, parent }: MenuListType) => {
+          {mainMenu?.map(({ id, title, url , object_id, parent }: MenuListType) => {
             const subMenuItems = mainMenu.filter(
               (menu: MenuListType) => menu.parent === id
             );
+            const mainMenuUrl = url.split("ir/")
             return (
               parent === 0 && (
                 <React.Fragment key={id}>
                   <NavbarItem className="relative group flex-center">
-                    <Link color="foreground" href={`/menuItems/${object_id}`}>
+                    <Link color="foreground" href={`${subMenuItems.length > 0 ? `/menuItems/${object_id}` : `/${mainMenuUrl[1]}`}`} className="hover:text-primary transition-colors">
                       {title.rendered}
                     </Link>
                     {subMenuItems.length > 0 && (
@@ -70,7 +69,7 @@ const Header = () => {
                       </div>
                     )}
                     {subMenuItems.length > 0 && (
-                      <HiChevronDown className="size-5" />
+                      <HiChevronDown className="size-5 hover:text-primary transition-colors" />
                     )}
                   </NavbarItem>
                 </React.Fragment>

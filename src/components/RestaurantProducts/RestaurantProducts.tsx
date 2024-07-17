@@ -1,4 +1,5 @@
 "use client";
+import Breadcrumb from "src/common/Breadcrumb";
 import Loading from "src/common/Loading";
 import MenuItemCard from "src/common/MenuItemCard";
 import { useGetCategoryById } from "src/hooks/useCategories";
@@ -16,6 +17,9 @@ const RestaurantProducts = ({ id }: { id: number }) => {
         </div>
       ) : (
         <>
+          <Breadcrumb>
+           <Breadcrumb.Item title={category?.name}/>
+          </Breadcrumb>
           <div id={category?.slug} className="flex flex-col gap-y-2 my-12">
             <h2 className=" font-extrabold text-2xl">{category?.name}</h2>
             <p className="flex gap-x-1">

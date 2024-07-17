@@ -37,9 +37,9 @@ const MenuItemCard = ({ product }: { product: ProductsListType }) => {
               />
             </p>
           </div>
-          <div className="max-w-96 md:max-w-full flex justify-center md:justify-start overflow-hidden">
+          <div className="max-w-40 md:max-w-full flex justify-center md:justify-start overflow-hidden">
             <div
-              className="flex flex-wrap font-normal text-wrap text-sm text-center md:text-right md:text-base text-gray-400"
+              className="flex flex-wrap justify-center font-normal text-wrap text-sm text-center md:text-right text-gray-400"
               dangerouslySetInnerHTML={{
                 __html: sanitizeHtml(description),
               }}
