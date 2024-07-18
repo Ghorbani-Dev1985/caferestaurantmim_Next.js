@@ -13,6 +13,9 @@
   li{
     @apply list-none
   }
+  p{
+  @apply text-justify leading-8
+  }
   body {
     @apply text-secondary bg-white h-full font-shabnam text-lg overflow-x-hidden scroll-smooth;
   }

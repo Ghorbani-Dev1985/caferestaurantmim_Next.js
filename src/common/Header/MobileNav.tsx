@@ -78,7 +78,6 @@ const MobileNav = () => {
             (menu: MenuListType) => menu.parent === item.id
           );
           const mainMenuUrl = item.url.split("ir/");
-          console.log(item.parent === 0);
           return (
             item.parent === 0 && (
               <React.Fragment key={item.id}>

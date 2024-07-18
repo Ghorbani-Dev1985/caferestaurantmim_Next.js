@@ -1,5 +1,5 @@
 
-import AboutUsItems from "./aboutUs/AboutUsItems";
+import AboutUsItems from "./aboutus/AboutUsItems";
 
 export const metadata = {
  title: "کافه و رستوران میم | Cafe Restaurant mim",
