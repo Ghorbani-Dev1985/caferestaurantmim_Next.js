@@ -30,7 +30,7 @@ const RestaurantProducts = ({ id }: { id: number }) => {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {products.map((product: ProductsListType) => {
+            {products?.map((product: ProductsListType) => {
               return <MenuItemCard key={product.id} product={product} />;
             })}
           </div>

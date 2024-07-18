@@ -8,6 +8,8 @@ import { ReactNode } from "react";
 import { Metadata } from "next";
 import ReactQueryProvider from "../Providers";
 import Header from "src/common/Header/Header";
+import PreFooter from "src/common/Footer/PreFooter";
+import Footer from "src/common/Footer/Footer";
 export const metadata: Metadata = {
   title: "کافه و رستوران میم | Cafe Restaurant mim",
   description: "کافه و رستوران میم با محیطی زیبا در خیابان لاکانی رشت آماده پذیرایی شما عزیزان می باشد ، امیدواریم لحظات خوبی را کنار هم داشته باشیم",
@@ -44,7 +46,8 @@ export default function RootLayout({ children } : {children : ReactNode}) {
          <main className="container h-screen flex flex-col items-center justify-center my-7">
         {children}
          </main>
-       
+        <PreFooter />
+        <Footer />
         </NextUIProvider>
        </ReactQueryProvider>
       </body>

@@ -31,8 +31,8 @@ const Header = () => {
             height={55}
             alt="ghorbani-dev.ir"
             placeholder="blur"
-            blurDataURL="/logo/logo.webp"
-            src="/Logo/logo2.webp"
+            blurDataURL="/images/logo/logo.webp"
+            src="/images/logo/logo.webp"
             className="object-fill"
           />
         </NavbarBrand>

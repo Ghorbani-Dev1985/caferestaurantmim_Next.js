@@ -43,8 +43,8 @@ const config : Config = {
         shabnam: ["var(--font-shabnam-FD)"],
       },
       backgroundImage: {
-        'paternBg' : 'url("/Footer/footerPatern.png")',
-         'Footer': 'linear-gradient(rgb(61,61,61), rgba(30,30,30,0.83)) , url("/Footer/footerPatern.png")'
+        'paternBg' : 'url("/images/footer/footerPatern.png")',
+         'Footer': 'linear-gradient(rgb(61,61,61), rgba(30,30,30,0.83)) , url("/images/footer/footerPatern.png")'
     },
     },
     screens: {

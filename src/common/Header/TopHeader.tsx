@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { HiPhone , HiDeviceMobile} from "react-icons/hi";
-import { BiLogoInstagram } from "react-icons/bi";
+import { HiPhone} from "react-icons/hi";
+import { BiLogoInstagram, BiMobileAlt } from "react-icons/bi";
 
 const TopHeader = () => {
     return (
@@ -28,7 +28,7 @@ const TopHeader = () => {
               className="flex-center gap-1 text-white"
             >
 
-              <HiDeviceMobile className="size-3 md:size-5 text-primary-500" /> 0912436610
+              <BiMobileAlt className="size-3 md:size-5 text-primary-500" /> 0912436610
             </Link>
           </div>
           <Link href="https://www.instagram.com/cafe_rest">
