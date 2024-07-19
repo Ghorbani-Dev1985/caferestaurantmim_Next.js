@@ -1,7 +1,6 @@
 import { SVGProps } from "react"
 
 const ImageMorphing = ({href} : {href: string}) => {
-  console.log(href)
   return (
     <>
       <svg  xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" className='w-full h-full max-h-full max-w-full overflow-visible' viewBox="0 0 200 200">
