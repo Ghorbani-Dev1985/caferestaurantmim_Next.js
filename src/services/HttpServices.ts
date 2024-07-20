@@ -17,6 +17,16 @@ const WcApi = axios.create({
   },
 });
 
+const GfApi = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_GF_BASE_URL,
+  auth: {
+    username: `${process.env.NEXT_PUBLIC_GF_USER_NAME}`,
+    password: `${process.env.NEXT_PUBLIC_GF_PASSWORD}`,
+  },
+});
+
+
+
 WpApi.interceptors.request.use(
   (res) => res,
   (err) => Promise.reject(err)
@@ -37,6 +47,16 @@ WcApi.interceptors.response.use(
  
 );
 
+GfApi.interceptors.request.use(
+  (res) => res,
+  (err) => Promise.reject(err)
+);
+
+GfApi.interceptors.response.use(
+  (res) => res,
+ 
+);
+
 const WpHttp = {
   get: WpApi.get,
   post: WpApi.post,
@@ -53,4 +73,12 @@ const WcHttp = {
   patch: WcApi.patch,
 };
 
-export {WpHttp, WcHttp};
+const GfHttp = {
+  get: GfApi.get,
+  post: GfApi.post,
+  delete: GfApi.delete,
+  put: GfApi.put,
+  patch: GfApi.patch,
+};
+
+export {WpHttp, WcHttp , GfHttp};
