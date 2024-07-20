@@ -6,51 +6,48 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
+import '../../../public/styles/imageGallerySwiper.css';
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import { useGetMedia } from "src/hooks/useMedia";
 import Image from "next/image";
 import { ImagesListType } from "src/types/imageGallery";
-const ImageGalleryModal = () => {
+const ImageGalleryModal = ({title} : {title : string}) => {
      const {data : images} = useGetMedia(16173)
      console.log(images && images)
     const {isOpen , onClose , onOpen} = useDisclosure();
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     return(
         <>
-        <Button onPress={() => onOpen()} className="absolute max-w-[220px] bottom-0 left-0 right-0 top-0 h-full w-full z-20 rounded-lg overflow-hidden bg-primary text-white font-bold bg-fixed opacity-0 transition-all duration-500 ease-linear"></Button>
-        <Modal size="full" isOpen={isOpen} onClose={onClose} classNames={{base: "bg-primary-200 text-white"}}>
+        <Button onPress={() => onOpen()} className="absolute max-w-[220px] bottom-0 left-0 right-0 top-0 h-full w-full z-20 rounded-lg overflow-hidden bg-primary text-white text-xl font-bold bg-fixed opacity-0 transition-all duration-500 ease-linear">{title}</Button>
+        <Modal size="full" isOpen={isOpen} onClose={onClose} classNames={{base: "bg-transparent backdrop-blur-md text-white"}}>
              <ModalContent>
                 {(onClose) => (
                     <>
                     <ModalHeader>گالری تصاویر</ModalHeader>
                     <ModalBody>
                     <Swiper
-        style={{
-          '--swiper-navigation-color': '#fff',
-          '--swiper-pagination-color': '#fff',
-        }}
         loop={true}
         spaceBetween={10}
         navigation={true}
         thumbs={{ swiper: thumbsSwiper }}
         modules={[FreeMode, Navigation, Thumbs]}
-        className="mySwiper2"
+        className="imageGallery"
       >
          {
         images && (
             images.map(({id , guid , title , alt_text , media_details} : ImagesListType) => {
                 return(
                <React.Fragment key={id}>
-                 <SwiperSlide>
+                 <SwiperSlide className="flex flex-col">
                <Image
-               width={media_details.width}
-               height={media_details.height}
+               width={200}
+               height={375}
                alt={alt_text}
                placeholder='blur'
                blurDataURL={guid.rendered}
                src={guid.rendered}
-               className="object-fill size-[220px] rounded-lg"
                />
+               <p className="text-xl my-4 bg-primary px-6 py-1 rounded-lg">{title.rendered}</p>
                </SwiperSlide>
              </React.Fragment>
                 )
@@ -68,7 +65,7 @@ const ImageGalleryModal = () => {
         freeMode={true}
         watchSlidesProgress={true}
         modules={[FreeMode, Navigation, Thumbs]}
-        className="mySwiper"
+        className="imageGalleryThumbs"
       >
          {
         images && (
@@ -77,13 +74,13 @@ const ImageGalleryModal = () => {
                <React.Fragment key={id}>
                  <SwiperSlide>
                <Image
-               width={media_details.width}
-               height={media_details.height}
+               width={220}
+               height={220}
                alt={alt_text}
                placeholder='blur'
                blurDataURL={guid.rendered}
                src={guid.rendered}
-               className="object-fill size-[220px] rounded-lg"
+               className="object-fill"
                />
                </SwiperSlide>
              </React.Fragment>

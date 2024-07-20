@@ -1,0 +1,65 @@
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .swiper-slide img {
+    display: block;
+    width: 200px !important;
+    height: 375px !important;
+    object-fit: cover;
+    border-radius: 15px;
+  }
+  .swiper {
+    width: 100%;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .swiper-slide {
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .imageGallery {
+    height: 80%;
+    width: 100%;
+  }
+  
+  .imageGalleryThumbs {
+    height: 20%;
+    box-sizing: border-box;
+    padding: 10px 0;
+  }
+  
+  .imageGalleryThumbs .swiper-slide {
+    width: 25%;
+    height: 100%;
+    opacity: 0.4;
+  }
+  
+  .imageGalleryThumbs .swiper-slide-thumb-active {
+    opacity: 1;
+  }
+  .imageGalleryThumbs img{
+    width: 307px !important;
+    height: 220px !important;
+    border-radius: 15px;
+  }
+
+  .swiper-button-next:after, .swiper-rtl .swiper-button-prev:after{
+    color: #fff;
+    font-size: 30px;
+  }

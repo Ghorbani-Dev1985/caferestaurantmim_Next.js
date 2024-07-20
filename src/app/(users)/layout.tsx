@@ -24,19 +24,6 @@ export default function RootLayout({ children } : {children : ReactNode}) {
     <link rel="apple-touch-icon" href="/images/icon/icon-180x180.webp" type="image/webp" />
     <GoogleTagManager gtmId={`GTM-${process.env.NEXT_PUBLIC_GOOGLETAGMANAGER_ID}`}/>
     <GoogleAnalytics gaId={`GTM-${process.env.NEXT_PUBLIC_GOOGLEANALYTICS_ID}`} />
-       <Script
-        id="gtag-init"
-        strategy="lazyOnload"
-        dangerouslySetInnerHTML={{
-          __html: `
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-        
-          gtag('config', '${process.env.NEXT_PUBLIC_MEASUREMENT_ID}');
-          `,
-        }}
-      />
       </head>
       <body>
        <ReactQueryProvider>

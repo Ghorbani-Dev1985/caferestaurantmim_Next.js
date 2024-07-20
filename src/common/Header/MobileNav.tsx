@@ -52,13 +52,13 @@ const MobileNav = () => {
     <>
       <button
         className="block md:hidden"
-        onClick={() => setDrawerOpen((prev) => !prev)}
+        onClick={() => setDrawerOpen(true)}
       >
         <HiMiniBars3BottomRight className="size-7 text-primary" />
       </button>
       <Drawer
         drawerOpen={drawerOpen}
-        onClose={() => setDrawerOpen((prev) => !prev)}
+        onClose={() => setDrawerOpen(false)}
       >
         <div className="flex flex-col items-center my-3">
          <Image
