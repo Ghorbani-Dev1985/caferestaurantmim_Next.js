@@ -19,6 +19,7 @@ const WcApi = axios.create({
 
 const GfApi = axios.create({
   baseURL: process.env.NEXT_PUBLIC_GF_BASE_URL,
+  headers: {'Access-Control-Allow-Origin': '*'},
   auth: {
     username: `${process.env.NEXT_PUBLIC_GF_USER_NAME}`,
     password: `${process.env.NEXT_PUBLIC_GF_PASSWORD}`,

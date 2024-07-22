@@ -5,11 +5,16 @@ import React from "react";
 import { useGetMedia } from "src/hooks/useMedia"
 import { ImagesListType } from "src/types/imageGallery"
 import ImageGalleryModal from "./ImageGalleryModal";
+import Breadcrumb from "../Breadcrumb";
 
 const ImageGalleryView = () => {
     const {data : images} = useGetMedia(16173)
     const {onOpen} = useDisclosure();
     return(
+        <>
+         <Breadcrumb>
+        <Breadcrumb.Item title="گالری تصاویر"/>
+       </Breadcrumb>
        <section className="container grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-10">
        {
         images && (
@@ -34,6 +39,7 @@ const ImageGalleryView = () => {
         )
        }
         </section>
+        </>
     )
 }
 
