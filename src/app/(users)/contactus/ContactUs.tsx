@@ -38,7 +38,6 @@ const ContactUs = () => {
       }catch (error) {
         console.log(error)
           toast.error("ارسال پیام انجام نشد");
-        
       }
   };
   return (
@@ -46,7 +45,7 @@ const ContactUs = () => {
      <Breadcrumb>
         <Breadcrumb.Item title="ارتباط با کافه رستوران میم"/>
        </Breadcrumb>
-    <section className="container flex flex-col md:flex-row justify-between gap-12 mt-8">
+    <section className="w-full flex flex-col md:flex-row justify-between gap-12 mt-8">
       <div className="flex flex-1 flex-col items-center justify-center gap-y-12 border-1 border-gray-200 rounded-lg p-5">
         <h2 className="font-extrabold text-xl">ارتباط با کافه رستوران میم</h2>
         <Image

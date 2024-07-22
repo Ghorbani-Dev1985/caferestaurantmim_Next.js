@@ -4,7 +4,8 @@ import { usePaginationItem } from "@nextui-org/react";
 import AboutUsItems from "./AboutUsItems";
 import AddressItems from "src/common/Footer/AddressItems";
 import GoogleMap from "src/common/GoogleMap";
-export const metadata = {
+import { Metadata } from "next";
+export const metadata : Metadata = {
   title: "درباره رستوران | کافه رستوران میم",
   description: "کافه و رستـوران میم میم یکی از کافه و رستوران رشت شما را به صرف غذاهای خاص دعوت می کند. ما در میم بر لذت بردن از مزه ها در فضایی که لحظه های به یاد ماندنی می سازد تاکید داریم و از این رو نام میم را که لذت میل کردن، نوشیدن و زندگی [&hellip;]"
  }

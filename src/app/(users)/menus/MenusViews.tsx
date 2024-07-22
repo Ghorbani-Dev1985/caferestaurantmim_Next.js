@@ -8,8 +8,7 @@ const MenusViews = () => {
         <Breadcrumb>
            <Breadcrumb.Item title="منو‌ها"/>
           </Breadcrumb>
-        <section className="container mt-6">
-        <div className="w-full max-w-4xl flex-col md:flex-row flex-between gap-8 mx-auto">
+        <section className="w-full max-w-4xl flex-col md:flex-row flex-between gap-8 mx-auto">
           <Link href="/menuItems/743">
             <Image
               width={385}
@@ -32,8 +31,7 @@ const MenusViews = () => {
               className="object-fill rounded-lg hover:scale-90 hover:opacity-80 transition-all ease-linear duration-250"
               />
           </Link>
-        </div>
-      </section>
+        </section>
               </>
     )
 }

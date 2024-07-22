@@ -15,7 +15,7 @@ const ImageGalleryView = () => {
          <Breadcrumb>
         <Breadcrumb.Item title="گالری تصاویر"/>
        </Breadcrumb>
-       <section className="container grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-10">
+       <section className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-10">
        {
         images && (
             images.map(({id , guid , title , alt_text} : ImagesListType) => {

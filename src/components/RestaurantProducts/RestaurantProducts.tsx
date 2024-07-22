@@ -10,7 +10,7 @@ const RestaurantProducts = ({ id }: { id: number }) => {
   const { data: products, isPending } = useGetProductsByCategory(id);
   const { data: category } = useGetCategoryById(id);
   return (
-    <section className="container relative min-h-screen mt-6">
+    <section className="relative min-h-screen mt-6">
       {isPending ? (
         <div className="flex-center min-h-screen">
           <Loading />
