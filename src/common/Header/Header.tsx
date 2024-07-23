@@ -12,7 +12,7 @@ import { useGetMenu } from "src/hooks/useMenu";
 import { MenuListType } from "src/types/menu";
 import React from "react";
 import { HiChevronDown } from "react-icons/hi";
-import { BiCircle } from "react-icons/bi";
+import { BiCalendarCheck, BiCircle } from "react-icons/bi";
 import MobileNav from "./MobileNav";
 
 const Header = () => {
@@ -20,12 +20,14 @@ const Header = () => {
   return (
     <header>
       <TopHeader />
-      <Navbar  classNames={{
+      <Navbar
+        classNames={{
           base: "container rounded-lg top-5 p-4 md:2.5 border-none",
           wrapper: " lg:max-w-[1280px] px-0",
-        }}>
+        }}
+      >
         <NavbarBrand>
-        <MobileNav />
+          <MobileNav />
           <Image
             width={116}
             height={55}
@@ -36,56 +38,77 @@ const Header = () => {
             className="object-fill"
           />
         </NavbarBrand>
-        <NavbarContent className="hidden sm:flex gap-4" justify="center">
-          {mainMenu?.map(({ id, title, url , object_id, parent }: MenuListType) => {
-            const subMenuItems = mainMenu.filter(
-              (menu: MenuListType) => menu.parent === id
-            );
-            const mainMenuUrl = url.split("ir/")
-            return (
-              parent === 0 && (
-                <React.Fragment key={id}>
-                  <NavbarItem className="relative group flex-center">
-                    <Link color="foreground" href={`${subMenuItems.length > 0 ? `/menuItems/${object_id}` : `/${mainMenuUrl[1]}`}`} className="hover:text-primary transition-colors">
-                      {title.rendered}
-                    </Link>
-                    {subMenuItems.length > 0 && (
-                      <div className="absolute flex flex-col invisible opacity-0 group-hover:visible group-hover:opacity-100 bg-white space-y-5 min-w-60 right-0 top-full p-3 rounded-xl shadow-lg border-b-5 border-b-primary xl:pt-4 transition-all z-50">
-                        {subMenuItems.map(
-                          ({ id, title, object_id }: MenuListType) => {
-                            return (
-                              <React.Fragment key={id}>
-                                <Link
-                                  color="foreground"
-                                  className="bg-primary-50/70 hover:bg-primary-500 hover:text-white p-2 rounded-lg transition-colors"
-                                  href={`/menuItems/${object_id}`}
-                                >
-                                  {title.rendered}
-                                </Link>
-                              </React.Fragment>
-                            );
-                          }
-                        )}
-                      </div>
-                    )}
-                    {subMenuItems.length > 0 && (
-                      <HiChevronDown className="size-5 hover:text-primary transition-colors" />
-                    )}
-                  </NavbarItem>
-                </React.Fragment>
-              )
-            );
-          })}
+        <NavbarContent className="hidden lg:flex gap-4" justify="center">
+          {mainMenu?.map(
+            ({ id, title, url, object_id, parent }: MenuListType) => {
+              const subMenuItems = mainMenu.filter(
+                (menu: MenuListType) => menu.parent === id
+              );
+              const mainMenuUrl = url.split("ir/");
+              return (
+                parent === 0 && (
+                  <React.Fragment key={id}>
+                    <NavbarItem className="relative group flex-center">
+                      <Link
+                        color="foreground"
+                        href={`${
+                          subMenuItems.length > 0
+                            ? `/menuItems/${object_id}`
+                            : `/${mainMenuUrl[1]}`
+                        }`}
+                        className="hover:text-primary transition-colors"
+                      >
+                        {title.rendered}
+                      </Link>
+                      {subMenuItems.length > 0 && (
+                        <div className="absolute flex flex-col invisible opacity-0 group-hover:visible group-hover:opacity-100 bg-white space-y-5 min-w-60 right-0 top-full p-3 rounded-xl shadow-lg border-b-5 border-b-primary xl:pt-4 transition-all z-50">
+                          {subMenuItems.map(
+                            ({ id, title, object_id }: MenuListType) => {
+                              return (
+                                <React.Fragment key={id}>
+                                  <Link
+                                    color="foreground"
+                                    className="bg-primary-50/70 hover:bg-primary-500 hover:text-white p-2 rounded-lg transition-colors"
+                                    href={`/menuItems/${object_id}`}
+                                  >
+                                    {title.rendered}
+                                  </Link>
+                                </React.Fragment>
+                              );
+                            }
+                          )}
+                        </div>
+                      )}
+                      {subMenuItems.length > 0 && (
+                        <HiChevronDown className="size-5 hover:text-primary transition-colors" />
+                      )}
+                    </NavbarItem>
+                  </React.Fragment>
+                )
+              );
+            }
+          )}
         </NavbarContent>
         <NavbarContent justify="end">
-          <NavbarItem className="lg:flex">
-          <Link
+          <NavbarItem className="flex-center flex-row-reverse gap-x-2">
+            <Link
               href="/menus"
-              className="flex justify-normal items-center gap-1 bg-primary hover:bg-primary-300 text-white cursor-pointer px-9 py-1.5 rounded-full transition-colors"
+              className="flex justify-normal items-center gap-1 bg-primary hover:bg-primary-300 text-white cursor-pointer px-1.5 md:px-9 py-1.5 rounded-lg transition-colors"
             >
-              <BiCircle /> منوها
+              <BiCircle className="hidden md:block" /> منوها
             </Link>
-        </NavbarItem>
+            <Link
+              href="/reservation"
+              className="relative flex justify-normal items-center gap-1 bg-primary-100 hover:bg-primary-600 text-primary hover:text-white cursor-pointer px-1.5 md:px-9 py-1.5 rounded-lg transition-colors"
+            >
+              <BiCalendarCheck className="size-3 md:size-4" />
+              رزرو میز
+              <span className="absolute flex size-3 -left-1 -top-1">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full size-3 bg-sky-500"></span>
+              </span>
+            </Link>
+          </NavbarItem>
         </NavbarContent>
       </Navbar>
     </header>

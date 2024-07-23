@@ -51,7 +51,7 @@ const MobileNav = () => {
   return (
     <>
       <button
-        className="block md:hidden"
+        className="block lg:hidden"
         onClick={() => setDrawerOpen(true)}
       >
         <HiMiniBars3BottomRight className="size-7 text-primary" />

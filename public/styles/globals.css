@@ -36,5 +36,12 @@
   }
   .smooth-transition {
     @apply transition-all duration-700;
+  }
+  .dir-ltr{
+    text-align: left;
+    direction: ltr;
   }  
 }
+.date-picker-custom [data-slot='input-wrapper'] {
+  @apply h-14 min-h-14;
+  }
