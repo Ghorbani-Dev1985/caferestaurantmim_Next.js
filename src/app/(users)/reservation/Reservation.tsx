@@ -34,13 +34,13 @@ const Reservation = () => {
       year: "numeric",
     };
     const persionDate = new Date(
-      `${data.input_7.year}/${data.input_7.month}/${data.input_7.day}`
+      `${data.date.year}/${data.date.month}/${data.date.day}`
     ).toLocaleDateString("fa-IR", options);
-    console.log(persionDate);
     try {
-      const res = await mutateAsync({ ...data, input_7: persionDate});
+      const res = await mutateAsync({ ...data, input_7: persionDate });
       toast.success(
-        "رزرو میز با موفقیت ثبت شد و در اولین فرصت با شما تماس گرفته خواهد شد"
+        "رزرو میز با موفقیت ثبت شد و در اولین فرصت با شما تماس گرفته خواهد شد",
+        { duration: 4000 }
       );
       reset();
     } catch (error) {
@@ -158,48 +158,56 @@ const Reservation = () => {
           </div>
           <div className="w-full flex-between gap-x-10">
             <div className="w-full flex flex-col">
-            <Controller
-              control={control}
-              name="input_6"
-              rules={{
-                required: "لطفا یک میز را انتخاب نمایید",
-              }}
-              render={({ field: { onChange } }) => (
-                <Select
-                  label="لطفا یک میز را انتخاب نمایید"
-                  onChange={onChange}
-                >
-                  {tables.map((table) => (
-                    <SelectItem key={table.key}>{table.label}</SelectItem>
-                  ))}
-                </Select>
+              <Controller
+                control={control}
+                name="input_6"
+                rules={{
+                  required: "لطفا یک میز را انتخاب نمایید",
+                }}
+                render={({ field: { onChange } }) => (
+                  <Select
+                    label="لطفا یک میز را انتخاب نمایید"
+                    onChange={onChange}
+                  >
+                    {tables.map((table) => (
+                      <SelectItem key={table.key}>{table.label}</SelectItem>
+                    ))}
+                  </Select>
+                )}
+              />
+              {errors.input_6 && (
+                <span className="block text-right text-rose-500 my-3.5 text-base">
+                  {errors.input_6.message}
+                </span>
               )}
-            />
-             {errors.input_6 && <span className="block text-right text-rose-500 my-3.5 text-base">{errors.input_6.message}</span>}
             </div>
-             <div className="w-full flex flex-col">
-            <Controller
-              control={control}
-              name="input_7"
-              rules={{
-                required: "لطفا تاریخ رزرو را انتخاب نمایید",
-              }}
-              render={({ field: { onChange, onBlur} }) => (
-                <I18nProvider locale="fa-IR">
-                  <div className="w-full date-picker-custom">
-                    <DatePicker
-                      onBlur={onBlur}
-                      isRequired
-                      onChange={onChange}
-                      classNames={{ base: "dir-ltr" }}
-                      aria-label="input_7"
-                    />
-                  </div>
-                </I18nProvider>
+            <div className="w-full flex flex-col">
+              <Controller
+                control={control}
+                name="date"
+                rules={{
+                  required: "لطفا تاریخ رزرو را انتخاب نمایید",
+                }}
+                render={({ field: { onChange, onBlur } }) => (
+                  <I18nProvider locale="fa-IR">
+                    <div className="w-full date-picker-custom">
+                      <DatePicker
+                        onBlur={onBlur}
+                        isRequired
+                        onChange={onChange}
+                        classNames={{ base: "dir-ltr" }}
+                        aria-label="date"
+                      />
+                    </div>
+                  </I18nProvider>
+                )}
+              />
+              {errors.date && (
+                <span className="block text-right text-rose-500 my-3.5 text-base">
+                  {errors.date.message}
+                </span>
               )}
-            />
-            {errors.input_7 && <span className="block text-right text-rose-500 my-3.5 text-base">{errors.input_7.message}</span>}
-             </div>
+            </div>
           </div>
           <Button
             type="submit"
@@ -209,7 +217,7 @@ const Reservation = () => {
             className="w-full font-extrabold disabled:bg-slate-300 disabled:opacity-70"
           >
             {isPending ? (
-              <Spinner size="md" color="primary" className="flex-center" />
+              <Spinner size="sm" color="primary" className="flex-center" />
             ) : (
               " ثبت رزرو میز"
             )}

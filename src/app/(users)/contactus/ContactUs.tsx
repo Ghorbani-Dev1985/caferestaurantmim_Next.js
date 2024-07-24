@@ -24,7 +24,7 @@ const ContactUs = () => {
       const res = await mutateAsync({ ...data });
       toast.success(
         "پیام شما با موفقیت ثبت شد و در اولین فرصت با شما تماس گرفته خواهد شد"
-      );
+      ), { duration: 4000};
       reset();
     } catch (error) {
       toast.error("ارسال پیام انجام نشد");
@@ -128,7 +128,7 @@ const ContactUs = () => {
               className="w-full font-extrabold disabled:bg-slate-300 disabled:opacity-70"
             >
               {isPending ? (
-                <Spinner size="md" color="primary" className="flex-center" />
+                <Spinner size="sm" color="primary" className="flex-center" />
               ) : (
                 "ارسال پیام"
               )}
