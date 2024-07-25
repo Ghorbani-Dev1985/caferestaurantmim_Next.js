@@ -1,6 +1,3 @@
-// import { AddressItems } from "@/UI/Footer";
-// import AddressMap from "@/UI/AddressMap";
-import { usePaginationItem } from "@nextui-org/react";
 import AboutUsItems from "./AboutUsItems";
 import AddressItems from "src/common/Footer/AddressItems";
 import GoogleMap from "src/common/GoogleMap";

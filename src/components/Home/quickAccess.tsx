@@ -16,7 +16,6 @@ const QuickAccess = () => {
  
   const {data , isPending} = useGetCategories()
   const categories = data?.filter((cat: CategoryListType) => cat.parent !== 0)
-  console.log(categories)
   return isPending ? (
     <Spinner size="md" color="primary" className="flex-center mt-12" />
   ) : (

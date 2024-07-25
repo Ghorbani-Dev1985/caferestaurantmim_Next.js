@@ -1,15 +1,14 @@
 "use client"
 import { ReactNode, Suspense } from "react";
 import ImageMorphing from "src/common/ImageMorphing";
-import { useGetMedia } from "src/hooks/useMedia";
+import { useGetAboutUsMedia } from "src/hooks/useMedia";
 import { useGetPage } from "src/hooks/usePage";
 import sanitizeHtml from "sanitize-html";
 import { Spinner } from "@nextui-org/react";
 
-const AboutUsItems = ({ children } : {children : ReactNode}) => {
+const AboutUsItems = ({ children } : {children? : ReactNode}) => {
   const {data: pageDetails , isPending} = useGetPage(861)
-  const {data : media } = useGetMedia(861)
-  console.log(media)
+  const {data : media } = useGetAboutUsMedia()
     return (
       <Suspense fallback={<Spinner size="md" color="primary" className="flex-center"/>}>
       <div className="flex-col md:flex-row flex-between gap-5">

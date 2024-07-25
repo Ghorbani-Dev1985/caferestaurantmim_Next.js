@@ -1,14 +1,13 @@
 "use client";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "../../../public/styles/mainPageSlider.css";
-import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import Image from "next/image";
-import { useGetMedia } from "src/hooks/useMedia";
+import { useGetSliderMedia } from "src/hooks/useMedia";
 import { Spinner } from "@nextui-org/react";
 import { ImagesListType } from "src/types/imageGallery";
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi";
@@ -16,10 +15,11 @@ import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi";
 const MainSlider = () => {
   const [isStart, setIsStart] = useState<boolean>(false);
   const [isEnd, setIsEnd] = useState<boolean>(false);
-  const { data: sliders, isPending } = useGetMedia(16286);
+  const { data: sliders, isPending } = useGetSliderMedia();
   return isPending ? (
     <Spinner size="md" color="primary" className="flex-center" />
   ) : (
+    <Suspense>
     <Swiper
       loop={true}
       centeredSlides={true}
@@ -71,11 +71,12 @@ const MainSlider = () => {
         type="button"
         disabled={isEnd}
         id="SwiperNextBtnID"
-        className="size-6 md:size-10 flex-center bg-white disabled:bg-slate-400 disabled:opacity-50 z-20 text-4xl rounded-full absolute top-1/2 bottom-1/2 -translate-x-1/2 -translate-y-1/2 left-5"
+        className="size-6 md:size-10 flex-center bg-white disabled:bg-slate-400 disabled:opacity-50 z-20 text-4xl rounded-full absolute top-1/2 bottom-1/2 -translate-x-1/2 -translate-y-1/2 left-5 md:left-8"
       >
         <HiOutlineChevronLeft className="size-3 md:size-6" />
       </button>
     </Swiper>
+      </Suspense>
   );
 };
 
