@@ -1,4 +1,5 @@
 "use client";
+import { Spinner } from "@nextui-org/react";
 import Breadcrumb from "src/common/Breadcrumb";
 import Loading from "src/common/Loading";
 import MenuItemCard from "src/common/MenuItemCard";
@@ -10,10 +11,10 @@ const RestaurantProducts = ({ id }: { id: number }) => {
   const { data: products, isPending } = useGetProductsByCategory(id);
   const { data: category } = useGetCategoryById(id);
   return (
-    <section className="relative min-h-screen mt-6">
+    <section className="container relative mt-6">
       {isPending ? (
-        <div className="flex-center min-h-screen">
-          <Loading />
+        <div className="flex-center">
+          <Spinner size="md" color="primary"/>
         </div>
       ) : (
         <>

@@ -10,6 +10,7 @@ import { Button, Spinner } from "@nextui-org/react";
 import TextField from "src/common/TextField";
 import TextAreaField from "src/common/TextAreaField";
 import Breadcrumb from "src/common/Breadcrumb";
+import SectionTitle from "src/common/SectionTitle";
 
 const ContactUs = () => {
   const {
@@ -35,16 +36,9 @@ const ContactUs = () => {
       <Breadcrumb>
         <Breadcrumb.Item title="ارتباط با کافه رستوران میم" />
       </Breadcrumb>
-      <section className="w-full flex flex-col md:flex-row justify-between gap-12 mt-8">
+      <section className="container w-full flex flex-col md:flex-row justify-between gap-12 mt-8">
         <div className="flex flex-1 flex-col items-center justify-center gap-y-12 border-1 border-gray-200 rounded-lg p-5">
-          <h2 className="font-extrabold text-xl">ارتباط با کافه رستوران میم</h2>
-          <Image
-            width="110"
-            height="25"
-            alt="ghorbani-dev.ir"
-            src="/images/titleLine/title.webp"
-            className="object-fill"
-          />
+         <SectionTitle title="ارتباط با کافه رستوران میم"/>
           <div className="space-y-10">
             <AddressItems />
           </div>

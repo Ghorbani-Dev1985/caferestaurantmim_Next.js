@@ -1,5 +1,6 @@
 import { Metadata } from "next";
-import Slider from "src/components/Home/Slider";
+import MainSlider from "src/components/Home/MainSlider";
+import QuickAccess from "src/components/Home/quickAccess";
 export const metadata : Metadata = {
  title: "کافه و رستوران میم | Cafe Restaurant mim",
  description: "کافه و رستوران میم با محیطی زیبا در خیابان لاکانی رشت آماده پذیرایی شما عزیزان می باشد ، امیدواریم لحظات خوبی را کنار هم داشته باشیم"
@@ -8,10 +9,11 @@ export const metadata : Metadata = {
 
 const HomePage = async () => {
   return (
-      <main className="min-h-screen">
-       <Slider />
-      </main>
-  );
+    <>
+  <MainSlider />
+  <QuickAccess />
+    </>
+  )
 };
 
 export default HomePage;
