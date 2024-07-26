@@ -6,4 +6,8 @@ export function GetSliderMedia() {
   
   export function GetAboutUsMedia() {
     return WpHttp.get(`/media?parent=861&per_page=80`).then(({ data }) => data);
+  } 
+  
+  export function GetImageGalleryMedia() {
+    return WpHttp.get(`/media?parent=16173&per_page=80`).then(({ data }) => data);
   }

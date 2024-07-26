@@ -2,13 +2,13 @@
 import { Button, useDisclosure } from "@nextui-org/react";
 import Image from "next/image"
 import React from "react";
-import { useGetMedia } from "src/hooks/useMedia"
+import { useGetImageGalleryMedia } from "src/hooks/useMedia"
 import { ImagesListType } from "src/types/imageGallery"
 import ImageGalleryModal from "./ImageGalleryModal";
 import Breadcrumb from "../Breadcrumb";
 
 const ImageGalleryView = () => {
-    const {data : images} = useGetMedia(16173)
+    const {data : images} = useGetImageGalleryMedia()
     const {onOpen} = useDisclosure();
     return(
         <>
