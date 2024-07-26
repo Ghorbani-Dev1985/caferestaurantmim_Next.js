@@ -15,11 +15,11 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import "../../../public/styles/imageGallerySwiper.css";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
-import { useGetMedia } from "src/hooks/useMedia";
+import { useGetImageGalleryMedia } from "src/hooks/useMedia";
 import Image from "next/image";
 import { ImagesListType } from "src/types/imageGallery";
 const ImageGalleryModal = ({ title }: { title: string }) => {
-  const { data: images } = useGetMedia(16173);
+  const { data: images } = useGetImageGalleryMedia();
   const { isOpen, onClose, onOpen } = useDisclosure();
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperClass>();
   return (
