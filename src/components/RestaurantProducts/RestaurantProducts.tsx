@@ -1,7 +1,6 @@
 "use client";
 import { Spinner } from "@nextui-org/react";
 import Breadcrumb from "src/common/Breadcrumb";
-import Loading from "src/common/Loading";
 import MenuItemCard from "src/common/MenuItemCard";
 import { useGetCategoryById } from "src/hooks/useCategories";
 import { useGetProductsByCategory } from "src/hooks/useProducts";

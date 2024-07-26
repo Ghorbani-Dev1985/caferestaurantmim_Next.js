@@ -1,5 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
-import { GetAboutUsMedia, GetImageGalleryMedia, GetSliderMedia } from "src/services/MediaService";
+import { GetAboutUsMedia, GetImageGalleryMedia, GetMedia, GetSliderMedia } from "src/services/MediaService";
+
+export const useGetMedia = (id : number) =>
+  useQuery({
+    queryKey: ["getMedia"],
+    queryFn: () => GetMedia(id),
+    retry: false,
+    refetchOnWindowFocus: true,
+  });
 
 export const useGetSliderMedia = () =>
     useQuery({
