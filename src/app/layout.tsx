@@ -3,13 +3,14 @@ import { ShabnamFont } from "@/utils/font";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import { NextUIProvider } from "@nextui-org/react";
 import { Toaster } from "react-hot-toast";
-import Script from "next/script";
 import { ReactNode } from "react";
 import { Metadata } from "next";
 import ReactQueryProvider from "./Providers";
 import Header from "src/common/Header/Header";
 import PreFooter from "src/common/Footer/PreFooter";
 import Footer from "src/common/Footer/Footer";
+import NextTopLoader from "nextjs-toploader";
+
 export const metadata: Metadata = {
   title: "کافه و رستوران میم | Cafe Restaurant mim",
   description:
@@ -47,6 +48,16 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body>
         <ReactQueryProvider>
           <NextUIProvider>
+          <NextTopLoader
+              color="#c58c3d"
+              initialPosition={0.08}
+              crawlSpeed={200}
+              height={4}
+              crawl={true}
+              showSpinner={false}
+              easing="ease"
+              speed={200}
+            />
             <Toaster />
             <Header />
             <main className="flex flex-col items-center justify-center my-7">

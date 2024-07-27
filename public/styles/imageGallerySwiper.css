@@ -1,9 +1,9 @@
 @import "./slider.css";
  
-  .swiper-slide img {
+  .imageGallery,.swiper-slide img {
     display: block;
-    width: 200px !important;
-    height: 375px !important;
+    width: 200px;
+    height: 375px;
     object-fit: cover;
     border-radius: 15px;
   }
@@ -14,7 +14,7 @@
     margin-right: auto;
   }
   
-  .swiper-slide {
+ .swiper-slide {
     background-size: cover;
     background-position: center;
     display: flex;

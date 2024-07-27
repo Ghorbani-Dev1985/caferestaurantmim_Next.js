@@ -16,10 +16,9 @@ const MainSlider = () => {
   const [isStart, setIsStart] = useState<boolean>(false);
   const [isEnd, setIsEnd] = useState<boolean>(false);
   const { data: sliders, isPending } = useGetSliderMedia();
-  return isPending ? (
-    <Spinner size="md" color="primary" className="flex-center" />
-  ) : (
-    <Suspense>
+  if(isPending) return <Spinner size="md" color="primary" className="flex-center" />
+  return (
+    <section className="w-full">
     <Swiper
       loop={true}
       centeredSlides={true}
@@ -44,13 +43,13 @@ const MainSlider = () => {
       onReachEnd={() => {
         setIsEnd(true);
       }}
-      className="mySwiper relative z-10"
+      className="homeSlider relative z-10"
     >
       {sliders?.map(({ id, guid }: ImagesListType) => (
         <SwiperSlide key={id}>
           <Image
-            width="1920"
-            height="700"
+            width={1920}
+            height={700}
             priority
             alt="ghorbani-dev.ir"
             placeholder="blur"
@@ -76,7 +75,7 @@ const MainSlider = () => {
         <HiOutlineChevronLeft className="size-3 md:size-6" />
       </button>
     </Swiper>
-      </Suspense>
+      </section>
   );
 };
 

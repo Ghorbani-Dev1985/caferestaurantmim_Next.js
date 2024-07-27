@@ -7,7 +7,7 @@ import { PostsListType } from "src/types/posts";
 import { useGetPosts } from "src/hooks/usePosts";
 import Breadcrumb from "src/common/Breadcrumb";
 
-const PostsView = () => {
+const PostsView = ({slice} : {slice? : number}) => {
    const {data : posts , isPending} = useGetPosts();
   const [page, setPage] = useState(1);
   const rowsPerPage = 10;
@@ -17,25 +17,35 @@ const PostsView = () => {
     const end = start + rowsPerPage;
     return posts?.slice(start, end);
   }, [page, posts]);
+  if(isPending) return <Spinner size="md" color="primary" className="flex-center" />
   return (
     <>
+    {
+      !slice &&
      <Breadcrumb>
            <Breadcrumb.Item title="خواندنی‌ها"/>
           </Breadcrumb>
+    }
     <section className="container my-8">
-      {isPending ? (
-        <Spinner size="md" color="primary" className="flex-center" />
-      ) : (
-        <article className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {posts?.map((post: PostsListType) => {
+      <article className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {posts && slice ? (
+          posts.slice(0 , slice).map((post: PostsListType) => {
             return (
               <React.Fragment key={post.id}>
                 <PostCard post={post} />
               </React.Fragment>
             );
-          })}
-        </article>
+          })
+      ) : (
+        posts.map((post: PostsListType) => {
+          return (
+            <React.Fragment key={post.id}>
+              <PostCard post={post} />
+            </React.Fragment>
+          );
+        })
       )}
+      </article>
       {pages > 1 && (
         <Pagination
           isCompact
