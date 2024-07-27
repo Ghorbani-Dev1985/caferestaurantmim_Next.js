@@ -5,6 +5,7 @@ import { Pagination, Spinner } from "@nextui-org/react";
 import PostCard from "src/common/Posts/PostCard";
 import { PostsListType } from "src/types/posts";
 import { useGetPosts } from "src/hooks/usePosts";
+import Breadcrumb from "src/common/Breadcrumb";
 
 const PostsView = () => {
    const {data : posts , isPending} = useGetPosts();
@@ -17,11 +18,15 @@ const PostsView = () => {
     return posts?.slice(start, end);
   }, [page, posts]);
   return (
+    <>
+     <Breadcrumb>
+           <Breadcrumb.Item title="خواندنی‌ها"/>
+          </Breadcrumb>
     <section className="container my-8">
       {isPending ? (
         <Spinner size="md" color="primary" className="flex-center" />
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <article className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {posts?.map((post: PostsListType) => {
             return (
               <React.Fragment key={post.id}>
@@ -29,7 +34,7 @@ const PostsView = () => {
               </React.Fragment>
             );
           })}
-        </div>
+        </article>
       )}
       {pages > 1 && (
         <Pagination
@@ -46,9 +51,10 @@ const PostsView = () => {
             next: "rotate-180",
             forwardIcon: "rotate-180",
           }}
-        />
-      )}
+          />
+        )}
     </section>
+        </>
   );
 };
 

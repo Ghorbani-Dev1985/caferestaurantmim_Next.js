@@ -3,8 +3,8 @@ import PostsView from "./PostsView";
 
 
 export const metadata : Metadata = {
-    title: "مقاله ها | کافه رستوران میم",
-    description: "مقاله های کافه رستوران میم"
+    title: " خواندنی‌ها | کافه رستوران ",
+    description: "خواندنی‌ها  کافه رستوران میم"
    }
 const Posts = () => {
     return <PostsView />
