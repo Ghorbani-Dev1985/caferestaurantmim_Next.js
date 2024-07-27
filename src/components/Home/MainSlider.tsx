@@ -1,5 +1,5 @@
 "use client";
-import { Suspense, useState } from "react";
+import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
@@ -17,7 +17,6 @@ const MainSlider = () => {
   const [isStart, setIsStart] = useState<boolean>(false);
   const [isEnd, setIsEnd] = useState<boolean>(false);
   const { data: sliders, isPending } = useGetSliderMedia();
-  console.log(sliders && sliders)
   if(isPending) return <Spinner size="md" color="primary" className="flex-center" />
   return (
     <section className="w-full">
@@ -52,7 +51,7 @@ const MainSlider = () => {
           <Link href={`/menuItems/${title.rendered}`}>
           <Image
             width={1920}
-            height={700}
+            height={550}
             priority
             alt={alt_text}
             placeholder="blur"

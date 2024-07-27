@@ -16,20 +16,20 @@ const PreFooter = () => {
       </div>
       <div className="bg-primary p-12">
         <div className="container flex flex-col items-center gap-y-8 font-bold">
-          <h3 className="font-extrabold md:text-2xl">
+          <h3 className="font-extrabold text-sm md:text-2xl">
             ساعات فعالیت کافه رستوران میم
           </h3>
-          <p className="flex-center gap-1">
-            <BiAlarmExclamation className="size-5" />
+          <p className="flex-center gap-1 text-xs md:text-lg">
+            <BiAlarmExclamation className="size-4 md:size-5" />
             <span> نهار و شام ساعت 12:00 الی 24:00</span>
           </p>
           <Link
-            href="/Menus"
-            className="flex justify-normal items-center gap-1 bg-transparent hover:bg-secondary/10 border border-secondary rounded-lg cursor-pointer px-9 py-1.5 transition-colors"
+            href="/menus"
+            className="flex justify-normal items-center gap-1 bg-transparent text-xs md:text-lg hover:bg-secondary/10 border border-secondary rounded-lg cursor-pointer px-4 md:px-9 py-2 transition-colors"
           >
-            <BiFoodMenu /> منو کافه رستوران میم
+            <BiFoodMenu className="size-4 md:size-5"/> منو کافه رستوران میم
           </Link>
-          <p className="mb-10">
+          <p className="mb-10 text-center">
             جهت مشاهده منو کافه ، رستوران میتوانید از لینک بالا استفاده نمایید
           </p>
         </div>

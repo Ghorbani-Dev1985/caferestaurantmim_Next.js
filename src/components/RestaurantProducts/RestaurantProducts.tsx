@@ -16,7 +16,7 @@ const RestaurantProducts = ({ id }: { id: number }) => {
         <Breadcrumb.Item title={category?.name} />
       </Breadcrumb>
       <section className="container relative mt-6">
-        <div id={category?.slug} className="flex flex-col gap-y-2 my-12">
+        <div className="flex flex-col gap-y-2 my-12">
           <h2 className=" font-extrabold text-2xl">{category?.name}</h2>
           <p className="flex gap-x-1">
             <span className="block w-28 h-1 rounded-full bg-primary"></span>
@@ -25,7 +25,7 @@ const RestaurantProducts = ({ id }: { id: number }) => {
             <span className="block size-1 rounded-full bg-primary"></span>
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-2 lg:gap-x-5 gap-y-2">
           {products?.map((product: ProductsListType) => {
             return <MenuItemCard key={product.id} product={product} />;
           })}

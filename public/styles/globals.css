@@ -7,14 +7,14 @@
     @apply p-0 m-0 box-border;
   }
   html{
-    @apply scroll-smooth scrollbar-thin scrollbar-thumb-primary  scrollbar-track-primary-100 overflow-x-hidden;
+    @apply scroll-smooth scrollbar-thin scrollbar-thumb-primary scrollbar-track-primary-100 overflow-x-hidden;
     direction: rtl;
   }
   li{
     @apply list-none
   }
   p{
-  @apply text-justify leading-8
+  @apply leading-8
   }
   body {
     @apply text-secondary bg-white h-full font-shabnam text-lg overflow-x-hidden scroll-smooth;

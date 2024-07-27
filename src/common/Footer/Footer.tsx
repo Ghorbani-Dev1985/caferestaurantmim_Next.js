@@ -1,9 +1,10 @@
 import Image from "next/image";
 import AddressItems from "./AddressItems";
+import ScrollToTopButton from "./ScrollToTopButton";
 
 const Footer = () => {
   return (
-    <footer>
+    <footer className="relative">
       <div className="bg-Footer min-h-96 relative">
         <div className="container flex flex-col items-center gap-y-10">
           <div className="absolute z-20 -top-[4.3rem]">
@@ -28,6 +29,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      <ScrollToTopButton />
     </footer>
   );
 };

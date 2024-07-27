@@ -114,7 +114,7 @@ const Reservation = () => {
             }}
             errors={errors}
           />
-          <div className="w-full flex-between gap-x-10">
+          <div className="w-full flex-col md:flex-row md:flex-between gap-x-10">
             <TextField
               name="input_5"
               type="number"
@@ -156,8 +156,8 @@ const Reservation = () => {
               errors={errors}
             />
           </div>
-          <div className="w-full flex-between gap-x-10">
-            <div className="w-full flex flex-col">
+          <div className="w-full flex-col md:flex-row md:flex-between gap-x-10 gap-y-5">
+            <div className="w-full flex flex-col mb-9 md:mb-0">
               <Controller
                 control={control}
                 name="input_6"

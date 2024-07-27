@@ -17,7 +17,7 @@ const AboutUsItems = ({ children } : {children? : ReactNode}) => {
             media && media[0].source_url && <ImageMorphing href={media[0].source_url} />
           }
         </div>
-        <div className="w-full md:w-3/5 flex flex-1 flex-col gap-8">
+        <div className="w-full md:w-3/5 flex flex-1 child:text-justify flex-col gap-8">
           <div dangerouslySetInnerHTML={{
                 __html: sanitizeHtml(pageDetails?.content?.rendered),
               }}></div> 

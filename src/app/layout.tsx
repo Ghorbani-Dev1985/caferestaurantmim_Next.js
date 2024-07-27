@@ -1,9 +1,9 @@
 import "../../public/styles/globals.css";
 import { ShabnamFont } from "@/utils/font";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
-import { NextUIProvider } from "@nextui-org/react";
+import { NextUIProvider, Spinner } from "@nextui-org/react";
 import { Toaster } from "react-hot-toast";
-import { ReactNode } from "react";
+import { ReactNode, Suspense } from "react";
 import { Metadata } from "next";
 import ReactQueryProvider from "./Providers";
 import Header from "src/common/Header/Header";

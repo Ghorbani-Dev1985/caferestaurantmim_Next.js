@@ -7,7 +7,7 @@ const AddressItems = () => {
       <div className="flex flex-col gap-y-4">
         <Link
           href="tel:09124366107"
-          className="flex-center text-base md:text-xl gap-1 text-inherit"
+          className="flex-center text-sm md:text-xl gap-1 text-inherit"
         >
           <BiMobileAlt className="size-6 text-primary-500" />
           میلاد نیک سرشت 09124366107 ( مدیریت )
