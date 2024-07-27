@@ -12,7 +12,6 @@ import { useGetMenu } from "src/hooks/useMenu";
 import { MenuListType } from "src/types/menu";
 import React from "react";
 import { HiChevronDown } from "react-icons/hi";
-import { BiCalendarCheck, BiCircle } from "react-icons/bi";
 import MobileNav from "./MobileNav";
 import CTABtns from "./CTABtns";
 

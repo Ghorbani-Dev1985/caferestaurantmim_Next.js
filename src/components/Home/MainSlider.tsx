@@ -11,11 +11,13 @@ import { useGetSliderMedia } from "src/hooks/useMedia";
 import { Spinner } from "@nextui-org/react";
 import { ImagesListType } from "src/types/imageGallery";
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi";
+import Link from "next/link";
 
 const MainSlider = () => {
   const [isStart, setIsStart] = useState<boolean>(false);
   const [isEnd, setIsEnd] = useState<boolean>(false);
   const { data: sliders, isPending } = useGetSliderMedia();
+  console.log(sliders && sliders)
   if(isPending) return <Spinner size="md" color="primary" className="flex-center" />
   return (
     <section className="w-full">
@@ -45,17 +47,19 @@ const MainSlider = () => {
       }}
       className="homeSlider relative z-10"
     >
-      {sliders?.map(({ id, guid }: ImagesListType) => (
+      {sliders?.map(({ id, guid , alt_text , title}: ImagesListType) => (
         <SwiperSlide key={id}>
+          <Link href={`/menuItems/${title.rendered}`}>
           <Image
             width={1920}
             height={700}
             priority
-            alt="ghorbani-dev.ir"
+            alt={alt_text}
             placeholder="blur"
             blurDataURL={guid.rendered}
             src={guid.rendered}
-          />
+            />
+            </Link>
         </SwiperSlide>
       ))}
       <button
