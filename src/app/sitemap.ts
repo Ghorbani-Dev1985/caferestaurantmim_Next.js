@@ -12,23 +12,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
     },
     {
-      url: `${SiteUrl}/aboutUs`,
+      url: `${SiteUrl}/aboutus`,
       lastModified: new Date(),
     },
     {
-      url: `${SiteUrl}/articles`,
+      url: `${SiteUrl}/contactus`,
       lastModified: new Date(),
     },
     {
-      url: `${SiteUrl}/cafeMenu`,
+      url: `${SiteUrl}/imagegallery`,
       lastModified: new Date(),
     },
     {
-      url: `${SiteUrl}/contactUs`,
-      lastModified: new Date(),
-    },
-    {
-      url: `${SiteUrl}/imageGallery`,
+      url: `${SiteUrl}/menuItems`,
       lastModified: new Date(),
     },
     {
@@ -36,7 +32,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
     },
     {
-      url: `${SiteUrl}/restaurantMenu`,
+      url: `${SiteUrl}/posts`,
+      lastModified: new Date(),
+    },
+    {
+      url: `${SiteUrl}/reservation`,
       lastModified: new Date(),
     },
    ];

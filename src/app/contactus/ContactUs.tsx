@@ -1,9 +1,8 @@
 "use client";
-import Image from "next/image";
 import toast from "react-hot-toast";
 import AddressItems from "src/common/Footer/AddressItems";
 import GoogleMap from "src/common/GoogleMap";
-import { useAddContactUs, useGetContactUs } from "src/hooks/useContactUs";
+import { useAddContactUs } from "src/hooks/useContactUs";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { ContactUsType } from "src/types/contactUs";
 import { Button, Spinner } from "@nextui-org/react";
