@@ -9,6 +9,10 @@ const PostCard = ({ post }: { post: PostsListType }) => {
   return (
     <div className="w-full flex flex-col gap-8 items-center border border-gray-200 rounded-xl p-5">
       <div className="min-h-[279px] flex-center">
+      <Link
+        href={`/posts/${id}`}
+        className="hover:scale-105 transition-transform duration-500"
+      >
         <Image
           width={279}
           height={279}
@@ -18,6 +22,7 @@ const PostCard = ({ post }: { post: PostsListType }) => {
           src={_embedded["wp:featuredmedia"][0].source_url}
           className="object-fill rounded-xl"
         />
+      </Link>
       </div>
       <Link
         href={`/posts/${id}`}

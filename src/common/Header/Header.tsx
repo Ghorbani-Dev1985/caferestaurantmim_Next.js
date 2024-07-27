@@ -22,23 +22,25 @@ const Header = () => {
       <TopHeader />
       <Navbar
         classNames={{
-          base: "container rounded-lg top-5 p-4 md:2.5 border-none",
-          wrapper: " lg:max-w-[1280px] px-0",
+          base: "container rounded-lg top-5 p-4 border-none",
+          wrapper: "lg:max-w-[1280px] px-0",
         }}
       >
         <NavbarBrand>
           <MobileNav />
-          <Image
-            width={116}
-            height={55}
-            alt="ghorbani-dev.ir"
-            placeholder="blur"
-            blurDataURL="/images/logo/logo.webp"
-            src="/images/logo/logo.webp"
-            className="object-fill"
-          />
+          <Link href="/">
+            <Image
+              width={200}
+              height={55}
+              alt="ghorbani-dev.ir"
+              placeholder="blur"
+              blurDataURL="/images/logo/logo.webp"
+              src="/images/logo/logo.webp"
+              className="object-fill"
+            />
+          </Link>
         </NavbarBrand>
-        <NavbarContent className="hidden lg:flex gap-4" justify="center">
+        <NavbarContent className="hidden lg:flex gap-6" justify="center">
           {mainMenu?.map(
             ({ id, title, url, object_id, parent }: MenuListType) => {
               const subMenuItems = mainMenu.filter(
@@ -90,8 +92,8 @@ const Header = () => {
           )}
         </NavbarContent>
         <NavbarContent justify="end">
-          <NavbarItem className="flex-center flex-row-reverse gap-x-2">
-           <CTABtns />
+          <NavbarItem className="flex-center flex-row-reverse gap-x-4">
+            <CTABtns />
           </NavbarItem>
         </NavbarContent>
       </Navbar>

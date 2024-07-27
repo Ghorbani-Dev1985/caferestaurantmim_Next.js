@@ -1,13 +1,13 @@
 @import "./slider.css";
  
-  .imageGallery,.swiper-slide img {
+  .imageGallery .swiper-slide img {
     display: block;
     width: 200px;
     height: 375px;
     object-fit: cover;
     border-radius: 15px;
   }
-  .swiper {
+  .imageGallery {
     width: 100%;
     height: 300px;
     margin-left: auto;

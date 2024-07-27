@@ -51,8 +51,7 @@ const MainSlider = () => {
           <Link href={`/menuItems/${title.rendered}`}>
           <Image
             width={1920}
-            height={550}
-            priority
+            height={500}
             alt={alt_text}
             placeholder="blur"
             blurDataURL={guid.rendered}

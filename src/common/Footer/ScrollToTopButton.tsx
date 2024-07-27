@@ -10,7 +10,6 @@ const ScrollToTopButton = () => {
     const toggleVisibility = () => {
       // if the user scrolls down, show the button
       window.scrollY > 500 ? setIsVisible(true) : setIsVisible(false);
-      console.log(window.screenY)
     };
     // listen for scroll events
     window.addEventListener("scroll", toggleVisibility);

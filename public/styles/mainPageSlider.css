@@ -1,13 +1,12 @@
 @import "./slider.css";
 
-.homeSlider,.swiper-slide img {
+.homeSlider .swiper-slide img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 0;
 }
-
 .swiper-pagination-progressbar .swiper-pagination-progressbar-fill{
   background: #e1ac63;
 }

@@ -57,6 +57,13 @@ const config : Config = {
     variants: {
       scrollbar: ["light"],
     },
+    typography: {
+      DEFAULT: {
+        css: {
+          maxWidth: '100ch',
+        }
+      }
+    }
 },
   plugins: [
     nextui({
