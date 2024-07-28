@@ -52,7 +52,8 @@ const Reservation = () => {
       <Breadcrumb>
         <Breadcrumb.Item title="رزرو میز" />
       </Breadcrumb>
-      <section className="container w-full flex flex-1 flex-col items-center justify-center gap-y-12 border-1 border-gray-200 rounded-lg p-5">
+      <section className="container">
+      <div className="w-full flex flex-1 flex-col items-center justify-center gap-y-12 border-1 border-gray-200 rounded-lg p-5">
         <h2 className="font-extrabold text-xl">رزرو میز کافه رستوران میم</h2>
         <Image
           width={110}
@@ -223,6 +224,7 @@ const Reservation = () => {
             )}
           </Button>
         </form>
+      </div>
       </section>
     </>
   );
