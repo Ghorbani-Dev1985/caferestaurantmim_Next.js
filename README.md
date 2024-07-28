@@ -7,7 +7,7 @@
 
 # Screen Shot
 
-<img  src="./public/images/screenShot/screenshot.png" width="100%" alt="ghorbani-dev.ir"/>
+<img  src="./public/images/screenShot/screenShot.png" width="100%" alt="ghorbani-dev.ir"/>
 
 
 
